@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Afreen Saiyed – Learn, Earn & Grow Online ✨</title>
+<meta name="description" content="Join Afreen Saiyed's online skills community. Learn Website Design, Graphics, Editing, Content Creation & more. 2000+ students. Start earning from Week 1."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --rose:#e8445a;--rose-light:#f7768a;--gold:#f5a623;--gold-light:#ffd580;
+    --cream:#fdf6ee;--warm-white:#fffaf5;--charcoal:#1a1218;--muted:#7a6870;
+    --border:rgba(232,68,90,0.12);--shadow:0 8px 40px rgba(232,68,90,0.10);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--charcoal);overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+  /* HERO */
+  .hero{min-height:100vh;background:linear-gradient(145deg,#1a1218 0%,#2d1520 45%,#1a1218 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(232,68,90,.25) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);animation:glow 6s ease-in-out infinite}
+  .hero::after{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(245,166,35,.12) 0%,transparent 70%);bottom:-80px;right:-100px;animation:glow 8s ease-in-out infinite reverse}
+  @keyframes glow{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.12)}}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,68,90,.15);border:1px solid rgba(232,68,90,.4);color:var(--rose-light);font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:8px 20px;border-radius:100px;margin-bottom:36px;position:relative;z-index:1;animation:fadeUp .8s ease both}
+  .dot{width:7px;height:7px;background:var(--rose);border-radius:50%;animation:blink 2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1.05;color:#fff;max-width:840px;position:relative;z-index:1;animation:fadeUp .9s .1s ease both}
+  .hero h1 em{font-style:italic;background:linear-gradient(90deg,var(--rose-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,.6);margin-top:24px;max-width:520px;line-height:1.75;position:relative;z-index:1;animation:fadeUp 1s .2s ease both}
+  .hero-cta-group{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:44px;position:relative;z-index:1;animation:fadeUp 1s .35s ease both}
+  .btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--rose),#c42d43);color:white;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;padding:16px 32px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 8px 30px rgba(232,68,90,.45);transition:all .3s ease}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(232,68,90,.6)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:16px 28px;border-radius:100px;border:1px solid rgba(255,255,255,.15);cursor:pointer;text-decoration:none;transition:all .3s ease}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+  .hero-stats{display:flex;gap:48px;margin-top:64px;position:relative;z-index:1;animation:fadeUp 1s .5s ease both;flex-wrap:wrap;justify-content:center}
+  .hero-stat{text-align:center}
+  .hero-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:white;line-height:1}
+  .hero-stat-num span{background:linear-gradient(90deg,var(--rose-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-stat-label{font-size:12px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+  .hero-divider{width:1px;height:40px;background:rgba(255,255,255,.15);align-self:center}
+  .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.3);font-size:11px;letter-spacing:2px;text-transform:uppercase;animation:fadeUp 1s .8s ease both}
+  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollA 2s ease-in-out infinite}
+  @keyframes scrollA{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+  /* SECTIONS */
+  section{padding:100px 24px;position:relative}
+  .container{max-width:1100px;margin:0 auto}
+  .section-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;color:var(--charcoal)}
+  .section-title em{font-style:italic;color:var(--rose)}
+
+  /* SKILLS STRIP */
+  .skills-strip{background:white;padding:44px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+  .skills-marquee{display:flex;gap:16px;width:max-content;animation:marqueeX 22s linear infinite}
+  .skills-marquee:hover{animation-play-state:paused}
+  @keyframes marqueeX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .skill-pill{display:inline-flex;align-items:center;gap:10px;background:var(--cream);border:1.5px solid var(--border);color:var(--charcoal);font-size:14px;font-weight:600;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+  .skill-pill span{font-size:18px}
+
+  /* COACH */
+  .coach-section{background:var(--cream)}
+  .coach-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .coach-visual{position:relative}
+  .coach-photo-wrap{position:relative;width:100%;padding-bottom:110%;overflow:hidden;border-radius:24px}
+  .coach-photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:24px}
+  .coach-photo-placeholder{position:absolute;inset:0;background:linear-gradient(145deg,#f7d6db,#fde8b0);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:6rem}
+  .coach-accent{position:absolute;bottom:-20px;right:-20px;width:140px;height:140px;background:linear-gradient(135deg,var(--rose),var(--gold));border-radius:20px;z-index:-1}
+  .coach-accent-2{position:absolute;top:-16px;left:-16px;width:80px;height:80px;border:3px solid var(--rose);border-radius:14px;opacity:.3}
+  .coach-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .coach-tag{background:white;border:1px solid var(--border);color:var(--charcoal);font-size:13px;font-weight:500;padding:8px 16px;border-radius:100px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+  .coach-text p{color:var(--muted);font-size:1.05rem;line-height:1.8;margin-top:20px}
+  .vision-box{margin-top:32px;background:linear-gradient(135deg,#1a1218,#2d1520);padding:28px;border-radius:20px;color:white;position:relative;overflow:hidden}
+  .vision-box::before{content:'"';font-family:'Playfair Display',serif;font-size:8rem;color:var(--rose);opacity:.15;position:absolute;top:-20px;left:16px;line-height:1}
+  .vision-box p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;line-height:1.6;color:rgba(255,255,255,.9);position:relative;z-index:1;margin-top:0!important}
+
+  /* STATS */
+  .stats-strip{background:linear-gradient(135deg,#1a1218,#2d1520);padding:64px 24px}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:900px;margin:0 auto}
+  .stat-card{text-align:center;padding:40px 20px;position:relative}
+  .stat-card::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.1)}
+  .stat-card:last-child::after{display:none}
+  .stat-emoji{font-size:1.6rem;margin-bottom:12px}
+  .stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;background:linear-gradient(90deg,var(--rose-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+  .stat-label{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;text-transform:uppercase;letter-spacing:1px}
+
+  /* BENEFITS */
+  .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:52px}
+  .benefit-card{background:white;border:1px solid var(--border);border-radius:24px;padding:36px 32px;box-shadow:var(--shadow);transition:all .35s ease;position:relative;overflow:hidden}
+  .benefit-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,68,90,.03),rgba(245,166,35,.03));opacity:0;transition:opacity .35s}
+  .benefit-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(232,68,90,.15);border-color:rgba(232,68,90,.25)}
+  .benefit-card:hover::before{opacity:1}
+  .benefit-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(232,68,90,.08);line-height:1;position:absolute;top:16px;right:24px}
+  .benefit-icon{font-size:2rem;margin-bottom:16px}
+  .benefit-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--charcoal);margin-bottom:10px}
+  .benefit-desc{font-size:.95rem;color:var(--muted);line-height:1.7}
+
+  /* TESTIMONIALS */
+  .testimonials-section{background:var(--cream);padding:100px 0;overflow:hidden}
+  .testimonials-section .container{padding:0 24px}
+  .marquee-wrapper,.marquee-wrapper-2{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
+  .marquee-wrapper{margin-top:48px}
+  .marquee-wrapper-2{margin-top:16px}
+  .marquee-track{display:flex;gap:20px;width:max-content;animation:marqueeX 30s linear infinite}
+  .marquee-track.reverse{animation-direction:reverse}
+  .marquee-track:hover{animation-play-state:paused}
+  .testi-card{width:280px;height:280px;border-radius:20px;overflow:hidden;flex-shrink:0;position:relative;cursor:pointer}
+  .testi-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .testi-card:hover img{transform:scale(1.06)}
+  .testi-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,18,24,.5),transparent 60%)}
+
+  /* FAQ */
+  .faq-list{margin-top:52px;max-width:760px;margin-left:auto;margin-right:auto}
+  .faq-item{border-bottom:1px solid var(--border)}
+  .faq-question{width:100%;background:none;border:none;text-align:left;padding:24px 8px;font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:600;color:var(--charcoal);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
+  .faq-question:hover{color:var(--rose)}
+  .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--cream);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;font-weight:700;transition:all .3s;color:var(--rose)}
+  .faq-item.open .faq-icon{background:var(--rose);border-color:var(--rose);color:white;transform:rotate(45deg)}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 8px;color:var(--muted);font-size:.97rem;line-height:1.75}
+  .faq-item.open .faq-answer{max-height:200px;padding-bottom:20px}
+
+  /* CTA */
+  .cta-section{background:linear-gradient(145deg,#1a1218 0%,#2d1520 100%);position:relative;overflow:hidden}
+  .cta-section::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(232,68,90,.2),transparent 70%);top:-200px;right:-100px}
+  .cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+  .cta-text .section-title{color:white}
+  .cta-text .section-title em{color:var(--gold-light)}
+  .cta-text p{color:rgba(255,255,255,.6);margin-top:20px;line-height:1.75;font-size:1rem}
+  .wa-info{margin-top:36px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px}
+  .wa-info p{color:rgba(255,255,255,.7);font-size:.9rem}
+  .wa-info strong{color:white}
+  .wa-info a{color:var(--rose-light);text-decoration:none}
+  .form-card{background:white;border-radius:28px;padding:44px 40px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .form-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+  .form-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:28px}
+  .form-group{margin-bottom:16px}
+  .form-group label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .form-group input,.form-group select{width:100%;padding:14px 18px;border:1.5px solid rgba(0,0,0,.1);border-radius:14px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--charcoal);background:var(--warm-white);outline:none;transition:all .25s;-webkit-appearance:none}
+  .form-group input:focus,.form-group select:focus{border-color:var(--rose);background:white;box-shadow:0 0 0 4px rgba(232,68,90,.08)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form-submit{width:100%;padding:17px;background:linear-gradient(135deg,var(--rose),#c42d43);color:white;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;border:none;border-radius:14px;cursor:pointer;margin-top:10px;box-shadow:0 8px 30px rgba(232,68,90,.4);transition:all .3s;letter-spacing:.3px}
+  .form-submit:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(232,68,90,.5)}
+
+  /* FOOTER */
+  footer{background:#100c0e;padding:48px 24px;text-align:center}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;background:linear-gradient(90deg,var(--rose-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px}
+  .footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:16px}
+  .footer-links a{color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s}
+  .footer-links a:hover{color:var(--rose-light)}
+  footer p{color:rgba(255,255,255,.3);font-size:13px;line-height:1.8}
+
+  /* FLOATING WA */
+  .wa-float{position:fixed;bottom:28px;right:28px;z-index:999;background:#25D366;color:white;border-radius:100px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;box-shadow:0 8px 30px rgba(37,211,102,.5);text-decoration:none;transition:all .3s;animation:fadeUp 1.5s ease both}
+  .wa-float:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 14px 40px rgba(37,211,102,.6)}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  @media(max-width:768px){
+    section{padding:70px 20px}
+    .coach-inner{grid-template-columns:1fr;gap:40px}
+    .coach-accent,.coach-accent-2{display:none}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat-card:nth-child(2)::after,.stat-card:nth-child(4)::after{display:none}
+    .benefits-grid{grid-template-columns:1fr}
+    .cta-inner{grid-template-columns:1fr;gap:48px}
+    .form-row{grid-template-columns:1fr}
+    .hero-divider{display:none}
+    .form-card{padding:32px 24px}
+    .wa-float span{display:none}
+    .wa-float{padding:16px;border-radius:50%}
+  }
+</style>
+</head>
+<body>
+
+<a class="wa-float" href="https://wa.me/918460801154" target="_blank" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><div class="dot"></div> Now Enrolling — Limited Seats</div>
+  <h1>Learn Skills.<br/><em>Earn Online.</em><br/>Grow Every Day.</h1>
+  <p class="hero-sub">Join Afreen Saiyed's community of 2000+ entrepreneurs who went from zero to earning ₹50K–₹1L/month with a proven system.</p>
+  <div class="hero-cta-group">
+    <a href="#join" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Join the Community
+    </a>
+    <a href="#coach" class="btn-ghost">Meet Afreen ↓</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num"><span>5</span>+</div><div class="hero-stat-label">Years Experience</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num"><span>2000</span>+</div><div class="hero-stat-label">Students Helped</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num"><span>₹1L</span></div><div class="hero-stat-label">Monthly Earning</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num"><span>24/7</span></div><div class="hero-stat-label">Mentorship</div></div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- SKILLS STRIP -->
+<div class="skills-strip">
+  <div class="skills-marquee" id="skillsMarquee"></div>
+</div>
+
+<!-- COACH -->
+<section class="coach-section" id="coach">
+  <div class="container">
+    <div class="coach-inner">
+      <div class="coach-visual reveal">
+        <div class="coach-photo-wrap">
+          <div class="coach-photo-placeholder">👩‍💼</div>
+        </div>
+        <div class="coach-accent"></div>
+        <div class="coach-accent-2"></div>
+      </div>
+      <div class="coach-text reveal" style="transition-delay:.15s">
+        <span class="section-tag">Your Coach</span>
+        <h2 class="section-title">Hi, I'm <em>Afreen Saiyed</em></h2>
+        <div class="coach-tags">
+          <span class="coach-tag">✅ Entrepreneur</span>
+          <span class="coach-tag">💻 Freelancer</span>
+          <span class="coach-tag">🎯 Skills Coach</span>
+          <span class="coach-tag">🚀 Digital Mentor</span>
+        </div>
+        <p>I started from zero — no special degree, no fancy background. Just the right skills and the drive to be financially free. Today I help 2000+ people across India do exactly the same.</p>
+        <p>My programs cover Website Design, Graphics, Video Editing, Content Creation, and Monetization — taught step-by-step, even if you're a complete beginner.</p>
+        <div class="vision-box">
+          <p>Empower People to Empower Themselves — Learn, Earn & Grow Online.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-grid reveal">
+    <div class="stat-card"><div class="stat-emoji">⭐</div><div class="stat-num">5+</div><div class="stat-label">Years Coaching</div></div>
+    <div class="stat-card"><div class="stat-emoji">👥</div><div class="stat-num">2000+</div><div class="stat-label">Students Helped</div></div>
+    <div class="stat-card"><div class="stat-emoji">💰</div><div class="stat-num">₹1L</div><div class="stat-label">Monthly Earning</div></div>
+    <div class="stat-card"><div class="stat-emoji">🌟</div><div class="stat-num">100%</div><div class="stat-label">Legitimate Skills</div></div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section>
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+      <span class="section-tag">What You Get</span>
+      <h2 class="section-title">What Happens When<br/><em>You Join?</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal"><div class="benefit-num">01</div><div class="benefit-icon">⚡</div><div class="benefit-title">Instant Connection</div><p class="benefit-desc">Direct WhatsApp access to Afreen. Ask questions, get clarity — your coach is just a message away, always.</p></div>
+      <div class="benefit-card reveal" style="transition-delay:.1s"><div class="benefit-num">02</div><div class="benefit-icon">📚</div><div class="benefit-title">Complete Training System</div><p class="benefit-desc">Proven step-by-step training in high-demand digital skills. From total beginner to confident earner — no experience needed.</p></div>
+      <div class="benefit-card reveal" style="transition-delay:.15s"><div class="benefit-num">03</div><div class="benefit-icon">🤝</div><div class="benefit-title">Daily Mentorship</div><p class="benefit-desc">24/7 WhatsApp support, weekly group calls, and an active community. You never walk this journey alone.</p></div>
+      <div class="benefit-card reveal" style="transition-delay:.2s"><div class="benefit-num">04</div><div class="benefit-icon">💸</div><div class="benefit-title">Start Earning from Week 1</div><p class="benefit-desc">Real income from your very first week. Build to ₹50K–₹1L/month within 1–2 months of consistent effort.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+      <span class="section-tag">Success Stories</span>
+      <h2 class="section-title">Real Results from<br/><em>Real Students</em></h2>
+      <p style="color:var(--muted);margin-top:16px;line-height:1.7">100% genuine feedback from people just like you who took the first step.</p>
+    </div>
+  </div>
+  <div class="marquee-wrapper"><div class="marquee-track" id="track1"></div></div>
+  <div class="marquee-wrapper-2"><div class="marquee-track reverse" id="track2"></div></div>
+  <div style="text-align:center;margin-top:44px">
+    <a href="#join" class="btn-primary" style="display:inline-flex">🚀 Join Them Today</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--cream)">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Your Questions,<br/><em>Answered</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What kind of work will I be doing? <span class="faq-icon">+</span></button><div class="faq-answer">Digital skills: Website Design, Graphics, Video Editing, Content Creation, Monetization & more. 100% legitimate online work you can do from home.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is this program safe and legitimate? <span class="faq-icon">+</span></button><div class="faq-answer">Absolutely. Genuine skills-based training with 2000+ students earning consistently. No MLM, no gimmicks — real skills, real income.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How much time do I need daily? <span class="faq-icon">+</span></button><div class="faq-answer">Just 1–2 hours a day. Fully flexible — designed for students, housewives, and working professionals with busy schedules.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">When will I start earning? <span class="faq-icon">+</span></button><div class="faq-answer">Many students begin earning in their first week. Sustainable ₹50K–₹1L/month income builds within 1–2 months of consistent work.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do I need prior experience? <span class="faq-icon">+</span></button><div class="faq-answer">Zero experience needed! Everything is taught from scratch with step-by-step guidance built for absolute beginners.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What support will I get after joining? <span class="faq-icon">+</span></button><div class="faq-answer">Daily mentorship, 24/7 WhatsApp support, weekly group calls, and an active community of fellow learners.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can I do this alongside my job or studies? <span class="faq-icon">+</span></button><div class="faq-answer">Yes! Designed for people with existing commitments. Learn and earn in your free time at your own pace.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is any investment required? <span class="faq-icon">+</span></button><div class="faq-answer">A nominal program fee covers everything you need. No hidden costs, no surprise charges — just skills and mentorship.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="join">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text reveal">
+        <span class="section-tag" style="color:var(--gold)">Ready to Begin?</span>
+        <h2 class="section-title">Transform Your<br/><em>Life Today</em></h2>
+        <p>Join thousands already on their journey to financial freedom. Fill the form and Afreen will personally connect with you within 24 hours.</p>
+        <div class="wa-info">
+          <p>📌 Save My Number: <strong>+91 84608 01154</strong></p>
+          <p>📝 Send: Name • Age • Profession</p>
+          <p>⏳ Response within <strong>24 hours</strong> guaranteed</p>
+          <p>📸 Instagram: <a href="https://www.instagram.com/afreen_saiyed" target="_blank">@afreen_saiyed</a></p>
+        </div>
+      </div>
+      <div class="form-card reveal" style="transition-delay:.15s">
+        <div class="form-title">Start Your Journey 🚀</div>
+        <div class="form-subtitle">Fill your details — Afreen will reach out within 24 hrs</div>
+        <div class="form-group"><label>Full Name *</label><input type="text" id="f-name" placeholder="Your full name"/></div>
+        <div class="form-row">
+          <div class="form-group"><label>Phone *</label><input type="tel" id="f-phone" placeholder="+91 XXXXX XXXXX"/></div>
+          <div class="form-group"><label>Age *</label><input type="number" id="f-age" placeholder="Your age" min="15" max="60"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Gender *</label><select id="f-gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+          <div class="form-group"><label>Profession *</label><select id="f-profession"><option value="">Select</option><option>Student</option><option>Housewife</option><option>Working Professional</option><option>Other</option></select></div>
+        </div>
+        <button class="form-submit" onclick="submitForm()">📲 Send to WhatsApp Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Afreen Saiyed</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/afreen_saiyed" target="_blank">Instagram</a>
+    <a href="https://wa.me/918460801154" target="_blank">WhatsApp</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p>🌟 Empower with Skills &nbsp;•&nbsp; 🌈 Support Every Vision &nbsp;•&nbsp; 🚀 Dreams to Direction</p>
+  <p style="margin-top:8px">❤️ With Strength & Sincerity, Afreen Saiyed</p>
+</footer>
+
+<script>
+const skills=[{icon:'🌐',label:'Website Design'},{icon:'🎨',label:'Graphic Design'},{icon:'🎬',label:'Video Editing'},{icon:'✍️',label:'Content Creation'},{icon:'💰',label:'Monetization'},{icon:'📱',label:'Social Media'},{icon:'🖥️',label:'Freelancing'},{icon:'📈',label:'Digital Marketing'}];
+const marquee=document.getElementById('skillsMarquee');
+[...skills,...skills].forEach(s=>{const p=document.createElement('div');p.className='skill-pill';p.innerHTML=`<span>${s.icon}</span>${s.label}`;marquee.appendChild(p);});
+
+const imgs=['https://i.ibb.co/396gM0y2/nisha-ff-2.jpg','https://i.ibb.co/nMfsCKrL/nisha-ff-3.jpg','https://i.ibb.co/ZpZQfyXn/nisha-ff-4.jpg','https://i.ibb.co/gZzG5hgW/nisha-ff-5.jpg','https://i.ibb.co/0jwXPVfJ/nisha-ff-6.jpg','https://i.ibb.co/7xbKk16V/nisha-ff-7.jpg','https://i.ibb.co/gMgvwMH6/nisha-ff-8.jpg','https://i.ibb.co/qYxMj57h/nisha-ff-9.jpg','https://i.ibb.co/0j4SNwBv/nisha-ff-10.jpg','https://i.ibb.co/nq49L0p8/nisha-ff1.jpg','https://i.ibb.co/NgKkTXGH/nisha-ff-11.jpg'];
+function buildTrack(id,list){const t=document.getElementById(id);[...list,...list].forEach(src=>{const c=document.createElement('div');c.className='testi-card';c.innerHTML=`<img src="${src}" alt="Student success" loading="lazy"/>`;t.appendChild(c);});}
+buildTrack('track1',imgs);buildTrack('track2',[...imgs].reverse());
+
+function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const age=document.getElementById('f-age').value.trim();
+  const gender=document.getElementById('f-gender').value;
+  const prof=document.getElementById('f-profession').value;
+  if(!name||!phone||!age||!gender||!prof){alert('Please fill in all fields before submitting.');return;}
+  const msg=`Hi Afreen! 👋\n\n📝 Name: ${name}\n📞 Phone: ${phone}\n🎂 Age: ${age}\n👤 Gender: ${gender}\n💼 Profession: ${prof}\n\nI want to join your community and start learning online! 🚀`;
+  window.open(`https://wa.me/918460801154?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
