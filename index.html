@@ -103,7 +103,8 @@
     @keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,100,130,0.5)} 50%{opacity:0.4;box-shadow:0 0 0 6px rgba(255,100,130,0)} }
 
     .hero-count {
-      font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 900; line-height: 1;
+      font-size: clamp(1.6rem, 6.5vw, 6.5rem); font-weight: 900; line-height: 1;
+      white-space: nowrap;
       position: relative; z-index: 1; animation: fadeUp 0.8s 0.1s ease both;
       background: linear-gradient(135deg, #ffffff 0%, #ff8fab 50%, #c084fc 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
@@ -224,9 +225,21 @@
     .section-header { text-align: center; padding: 0 20px; margin-bottom: 22px; overflow: hidden; }
     /* point 5: bigger title */
     .section-title-main {
-      font-size: clamp(1rem, 5.5vw, 2.8rem);
+      font-size: clamp(1rem, 4.8vw, 2.8rem);
       font-weight: 800; color: #fff; margin-bottom: 8px;
       white-space: nowrap; max-width: 100%; display: block;
+    }
+    /* Point 2: Real Success Stories — bigger since short text */
+    .section-title-main.size-lg {
+      font-size: clamp(1.2rem, 6vw, 2.8rem);
+    }
+    /* Point 3: What Happens When You Join — smallest to avoid cut */
+    .section-title-main.size-sm {
+      font-size: clamp(0.9rem, 4.2vw, 2.4rem);
+    }
+    /* Point 4: Know Your Coach — bigger */
+    .section-title-main.size-xl {
+      font-size: clamp(1.4rem, 6.5vw, 3rem);
     }
     .highlight { background: linear-gradient(135deg, #ff6482, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     /* point 5: bigger subtitle */
@@ -353,9 +366,9 @@
     .wa-number-box {
       display: flex; align-items: center; gap: 8px;
       background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.22);
-      border-radius: 10px; padding: 13px 16px; margin-bottom: 12px;
+      border-radius: 10px; padding: 9px 14px; margin-bottom: 12px;
     }
-    .wa-number-box span { font-size: 17px; color: rgba(255,255,255,0.9); font-weight: 700; }
+    .wa-number-box span { font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 700; }
     .wa-msg-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: linear-gradient(135deg, #ff6482, #c084fc);
@@ -540,7 +553,7 @@
 <section class="testimonials-section">
   <div class="section-header sr">
     <!-- point 5: bigger title & subtitle -->
-    <h2 class="section-title-main">✨ Real <span class="highlight">Success Stories</span></h2>
+    <h2 class="section-title-main size-lg">✨ Real <span class="highlight">Success Stories</span></h2>
     <p class="section-subtitle">100% real feedback from real students</p>
   </div>
   <div class="marquee-outer">
@@ -553,7 +566,7 @@
 ══════════════════════════════════════ -->
 <section class="benefits-section">
   <div class="section-header sr">
-    <h2 class="section-title-main">What Happens When <span class="highlight">You Join?</span></h2>
+    <h2 class="section-title-main size-sm">What Happens When <span class="highlight">You Join?</span></h2>
   </div>
   <div class="benefits-grid">
     <div class="benefit-card sr">
@@ -588,7 +601,7 @@
 ══════════════════════════════════════ -->
 <section class="know-coach-section">
   <div class="section-header sr">
-    <h2 class="section-title-main">Know Your <span class="highlight">Coach</span></h2>
+    <h2 class="section-title-main size-xl">Know Your <span class="highlight">Coach</span></h2>
   </div>
   <div class="coach-stats-vertical sr">
     <div class="cs-v-item">
