@@ -233,9 +233,13 @@
     .section-title-main.size-lg {
       font-size: clamp(1.2rem, 6vw, 2.8rem);
     }
-    /* Point 3: What Happens When You Join — smallest to avoid cut */
+    /* What Happens When You Join — medium, bigger but won't cut */
     .section-title-main.size-sm {
-      font-size: clamp(0.9rem, 4.2vw, 2.4rem);
+      font-size: clamp(1rem, 5vw, 2.6rem);
+    }
+    /* Frequently Asked Questions — medium same */
+    .section-title-main.size-md {
+      font-size: clamp(1rem, 5vw, 2.6rem);
     }
     /* Point 4: Know Your Coach — bigger */
     .section-title-main.size-xl {
@@ -639,7 +643,7 @@
 ══════════════════════════════════════ -->
 <section class="faq-section">
   <div class="section-header sr">
-    <h2 class="section-title-main">Frequently Asked <span class="highlight">Questions</span></h2>
+    <h2 class="section-title-main size-md">Frequently Asked <span class="highlight">Questions</span></h2>
   </div>
   <div class="faq-list sr">
     <div class="faq-item">
@@ -811,22 +815,35 @@
   }
 
   /* ── GOOGLE SHEET SAVE — fixed ── */
+  /* ── GOOGLE SHEET SAVE — most reliable cross-origin method ── */
   async function saveToSheet(data) {
     if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
-    try {
-      // Build URL with all params explicitly
-      const url = SHEET_URL
-        + '?timestamp=' + encodeURIComponent(new Date().toLocaleString('en-IN'))
-        + '&name='       + encodeURIComponent(data.name)
-        + '&phone='      + encodeURIComponent(data.phone)
-        + '&age='        + encodeURIComponent(data.age)
-        + '&gender='     + encodeURIComponent(data.gender)
-        + '&profession=' + encodeURIComponent(data.profession);
 
-      // Use no-cors — Apps Script accepts GET requests cross-origin
-      await fetch(url, { method: 'GET', mode: 'no-cors' });
+    const params = '?timestamp=' + encodeURIComponent(new Date().toLocaleString('en-IN'))
+      + '&name='       + encodeURIComponent(data.name)
+      + '&phone='      + encodeURIComponent(data.phone)
+      + '&age='        + encodeURIComponent(data.age)
+      + '&gender='     + encodeURIComponent(data.gender)
+      + '&profession=' + encodeURIComponent(data.profession);
+
+    const fullUrl = SHEET_URL + params;
+
+    // Method 1: fetch no-cors (works in most modern browsers)
+    try {
+      await fetch(fullUrl, { method: 'GET', mode: 'no-cors' });
+      return;
+    } catch(e) { /* fall through to method 2 */ }
+
+    // Method 2: Image beacon fallback (always works, no CORS issues)
+    try {
+      await new Promise((resolve) => {
+        const img = new Image();
+        img.onload = img.onerror = resolve;
+        img.src = fullUrl;
+        setTimeout(resolve, 3000); // timeout after 3s
+      });
     } catch(e) {
-      console.warn('Sheet save error:', e);
+      console.warn('Sheet save fallback failed:', e);
     }
   }
 
