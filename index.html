@@ -29,10 +29,7 @@
       border-radius: 20px; padding: 32px; max-width: 500px; width: 100%;
       position: relative; max-height: 85vh; overflow-y: auto;
     }
-    .modal-close {
-      position: absolute; top: 12px; right: 16px;
-      background: none; border: none; color: #aaa; font-size: 24px; cursor: pointer;
-    }
+    .modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none; color: #aaa; font-size: 24px; cursor: pointer; }
     .modal-close:hover { color: #fff; }
     .privacy-box h3 { color: #ff6482; font-size: 13px; font-weight: 700; margin: 16px 0 5px; }
     .privacy-box h3:first-of-type { margin-top: 0; }
@@ -48,10 +45,7 @@
     .form-box-title { font-size: 18px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 3px; }
     .form-box-sub { font-size: 11px; color: rgba(255,255,255,0.4); text-align: center; margin-bottom: 22px; }
     .fgroup { margin-bottom: 12px; }
-    .fgroup label {
-      display: block; font-size: 10px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px;
-    }
+    .fgroup label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
     .fgroup input, .fgroup select {
       width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.06);
       border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px;
@@ -61,7 +55,6 @@
     .fgroup input::placeholder { color: rgba(255,255,255,0.25); }
     .fgroup select option { background: #1a1a2e; color: #fff; }
     .fgroup input:focus, .fgroup select:focus { border-color: #ff6482; background: rgba(255,100,130,0.07); }
-    /* Age + Gender on ONE line */
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .form-send-btn {
       width: 100%; padding: 13px; background: linear-gradient(135deg, #ff6482, #c084fc);
@@ -74,11 +67,14 @@
     .form-send-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .form-status { text-align: center; font-size: 12px; margin-top: 10px; min-height: 16px; color: #4ade80; }
 
-    /* ── HERO ── */
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
     .hero {
-      min-height: 100vh; background: linear-gradient(160deg, #0d0d1a 0%, #1a0a1e 40%, #0d0d1a 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 48px 20px 36px; position: relative; overflow: hidden;
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0d0d1a 0%, #1a0a1e 40%, #0d0d1a 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      text-align: center; padding: 16px 20px 48px; position: relative; overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; width: 600px; height: 600px;
@@ -89,48 +85,53 @@
     .hero::after {
       content: ''; position: absolute; width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(160,80,255,0.12) 0%, transparent 65%);
-      bottom: -100px; right: -80px;
-      animation: orb2 9s ease-in-out infinite; pointer-events: none;
+      bottom: -100px; right: -80px; animation: orb2 9s ease-in-out infinite; pointer-events: none;
     }
     @keyframes orb1 { 0%,100%{transform:translateX(-50%) scale(1)} 50%{transform:translateX(-50%) scale(1.15)} }
     @keyframes orb2 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
 
+    /* Badge — same style as Watch My Journey border (point 1 reference) */
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,100,130,0.12); border: 1px solid rgba(255,100,130,0.35);
-      color: #ff8fab; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: 7px 16px; border-radius: 100px;
-      margin-bottom: 16px; position: relative; top: -20px; z-index: 1; animation: fadeUp 0.7s ease both;
+      background: rgba(255,100,130,0.12); border: 1px solid rgba(255,100,130,0.45);
+      color: #ff8fab; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+      padding: 9px 20px; border-radius: 100px;
+      margin-bottom: 14px; margin-top: 10px;
+      position: relative; z-index: 1; animation: fadeUp 0.7s ease both;
     }
-    .live-dot {
-      width: 7px; height: 7px; background: #ff6482; border-radius: 50%;
-      animation: liveBlink 1.5s infinite;
-    }
+    .live-dot { width: 8px; height: 8px; background: #ff6482; border-radius: 50%; animation: liveBlink 1.5s infinite; }
     @keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,100,130,0.5)} 50%{opacity:0.4;box-shadow:0 0 0 6px rgba(255,100,130,0)} }
 
-    /* ── HERO COUNT — animated text ── */
     .hero-count {
-      font-size: clamp(2.4rem, 8vw, 5.5rem); font-weight: 900; line-height: 1;
+      font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 900; line-height: 1;
       position: relative; z-index: 1; animation: fadeUp 0.8s 0.1s ease both;
       background: linear-gradient(135deg, #ffffff 0%, #ff8fab 50%, #c084fc 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .hero-label {
-      font-size: clamp(0.85rem, 2.2vw, 1.1rem); font-weight: 700;
-      color: rgba(255,255,255,0.9); margin-top: 4px;
+      font-size: clamp(1rem, 2.8vw, 1.3rem); font-weight: 700;
+      color: rgba(255,255,255,0.9); margin-top: 6px;
       position: relative; z-index: 1; animation: fadeUp 0.8s 0.15s ease both;
     }
     .hero-tagline {
-      font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: 1px;
+      font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 6px; letter-spacing: 1px;
       position: relative; z-index: 1; animation: fadeUp 0.8s 0.2s ease both;
     }
     .hero-tagline span { color: rgba(255,255,255,0.2); margin: 0 8px; }
 
+    /* ── WATCH MY JOURNEY BLOCK (point 1: same border as skill seekers badge) ── */
     .journey-block {
-      position: relative; z-index: 1; margin-top: 18px; width: 100%; max-width: 500px;
+      position: relative; z-index: 1; margin-top: 16px; width: 100%; max-width: 500px;
       animation: fadeUp 0.8s 0.25s ease both;
     }
-    .journey-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+    /* point 1: bordered label same style as badge */
+    .journey-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,100,130,0.10); border: 1px solid rgba(255,100,130,0.45);
+      color: #ff8fab; font-size: 13px; font-weight: 700;
+      padding: 8px 20px; border-radius: 100px;
+      margin-bottom: 14px;
+    }
     .yt-embed { width: 100%; border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
     .yt-embed iframe { width: 100%; height: 100%; border: none; display: block; }
     .yt-placeholder {
@@ -141,40 +142,39 @@
     }
     @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
-    /* ── COACH SECTION ── */
-    .coach-section {
-      background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a);
-      padding: 36px 20px 32px; text-align: center; position: relative; overflow: hidden;
+    /* ── COACH — inside hero, directly below video ── */
+    .coach-inner-wrap {
+      width: 100%; max-width: 500px;
+      margin-top: 28px;
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
     }
-    .coach-section::before {
-      content: ''; position: absolute; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(192,132,252,0.10) 0%, transparent 70%);
-      top: -100px; right: -100px; pointer-events: none;
-    }
-    .coach-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c084fc; margin-bottom: 14px; display: block; }
+    /* point 3: bigger "Your Coach" label */
+    .coach-label { font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #c084fc; margin-bottom: 16px; display: block; }
     .coach-photo-ring {
-      width: 110px; height: 110px; border-radius: 50%;
+      width: 120px; height: 120px; border-radius: 50%;
       background: linear-gradient(135deg, #ff6482, #c084fc);
-      padding: 3px; margin: 0 auto 18px; animation: ringPulse 3s ease-in-out infinite;
+      padding: 3px; margin: 0 auto 16px; animation: ringPulse 3s ease-in-out infinite;
     }
     @keyframes ringPulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,100,130,0.3)} 50%{box-shadow:0 0 0 12px rgba(255,100,130,0)} }
     .coach-photo-inner {
       width: 100%; height: 100%; border-radius: 50%;
       background: linear-gradient(145deg, #2a1535, #1a0a2e);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; font-size: 3rem; overflow: hidden;
     }
     .coach-photo-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    /* point 3: bigger coach name */
     .coach-name {
-      font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800;
+      font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800;
       background: linear-gradient(135deg, #ffffff, #ff8fab);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
-    .coach-roles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 16px; }
+    .coach-roles { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
     .coach-role {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 100px;
+      color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 100px;
     }
     .vision-card {
       background: rgba(255,100,130,0.08); border: 1px solid rgba(255,100,130,0.25);
@@ -184,45 +184,49 @@
       content: '"'; font-size: 5rem; color: rgba(255,100,130,0.15);
       position: absolute; top: -8px; left: 14px; font-family: Georgia, serif; line-height: 1;
     }
-    .vision-title { font-size: 12px; font-weight: 700; color: #ff8fab; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-    .vision-text { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.55; font-style: italic; }
+    .vision-title { font-size: 13px; font-weight: 700; color: #ff8fab; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .vision-text { font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.55; font-style: italic; }
+    /* point 4: wider Connect on WhatsApp button */
     .wa-connect-btn {
-      display: inline-flex; align-items: center; gap: 9px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
       background: linear-gradient(135deg, #ff6482, #c084fc);
-      color: white; font-size: 14px; font-weight: 700; padding: 13px 28px;
+      color: white; font-size: 16px; font-weight: 700;
+      padding: 15px 0; width: 100%; max-width: 420px;
       border-radius: 100px; border: none; cursor: pointer;
       box-shadow: 0 5px 20px rgba(255,100,130,0.35); transition: all 0.3s; font-family: 'Poppins', sans-serif;
     }
     .wa-connect-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,100,130,0.5); }
 
-    /* ── STATS — VERTICAL layout ── */
+    /* ── STATS VERTICAL ── */
     .stats-vertical {
       display: flex; flex-direction: column; gap: 0;
-      margin-top: 24px; max-width: 340px; margin-left: auto; margin-right: auto;
+      margin-top: 22px; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto;
       border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden;
     }
     .stat-v-item {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.08);
-      text-align: left;
+      padding: 16px 40px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left;
     }
     .stat-v-item:last-child { border-bottom: none; }
     .stat-v-left { display: flex; flex-direction: column; }
     .stat-v-num {
-      font-size: 1.6rem; font-weight: 900;
+      font-size: 1.7rem; font-weight: 900;
       background: linear-gradient(135deg, #ff8fab, #c084fc);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      line-height: 1;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
     }
-    .stat-v-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .stat-v-icon { font-size: 1.6rem; opacity: 0.7; }
+    .stat-v-lbl { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+    .stat-v-icon { font-size: 1.8rem; opacity: 0.75; }
 
-    /* ── TESTIMONIALS ── */
+    /* ══════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════ */
     .testimonials-section { padding: 36px 0 32px; background: #0d0d1a; overflow: hidden; }
-    .section-header { text-align: center; padding: 0 20px; margin-bottom: 20px; }
-    .section-title-main { font-size: clamp(1.3rem, 3.5vw, 2rem); font-weight: 800; color: #fff; margin-bottom: 5px; }
+    .section-header { text-align: center; padding: 0 20px; margin-bottom: 22px; }
+    /* point 5: bigger title */
+    .section-title-main { font-size: clamp(1.9rem, 5.5vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 8px; }
     .highlight { background: linear-gradient(135deg, #ff6482, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .section-subtitle { font-size: 12px; color: rgba(255,255,255,0.4); }
+    /* point 5: bigger subtitle */
+    .section-subtitle { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.55); }
 
     .marquee-outer {
       overflow: hidden;
@@ -237,76 +241,83 @@
     .tcard:hover img { transform: scale(1.07); }
     .tcard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 60%); }
 
-    /* ── BENEFITS ── */
+    /* ══════════════════════════════════════
+       BENEFITS — point 6: bigger text
+    ══════════════════════════════════════ */
     .benefits-section { padding: 36px 20px 32px; background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a); }
     .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 760px; margin: 20px auto 0; }
     .benefit-card {
       background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 14px; padding: 22px 18px; position: relative; overflow: hidden; transition: all 0.35s ease;
+      border-radius: 14px; padding: 24px 20px; position: relative; overflow: hidden; transition: all 0.35s ease;
     }
     .benefit-card:hover { transform: translateY(-4px); border-color: rgba(255,100,130,0.3); }
     .benefit-step {
-      width: 34px; height: 34px; background: linear-gradient(135deg, #ff6482, #c084fc);
+      width: 38px; height: 38px; background: linear-gradient(135deg, #ff6482, #c084fc);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 800; color: white; margin-bottom: 12px;
+      font-size: 16px; font-weight: 800; color: white; margin-bottom: 12px;
     }
-    .benefit-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .benefit-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.55; }
-    .get-started-wrap { text-align: center; margin-top: 22px; }
+    /* point 6: bigger benefit title & desc */
+    .benefit-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 7px; }
+    .benefit-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .get-started-wrap { text-align: center; margin-top: 24px; }
+    /* point 7: wider Get Started button */
     .get-started-btn {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       background: linear-gradient(135deg, #ff6482, #c084fc);
-      color: white; font-size: 14px; font-weight: 700; padding: 13px 30px;
+      color: white; font-size: 16px; font-weight: 700;
+      padding: 15px 0; width: 100%; max-width: 420px;
       border-radius: 100px; border: none; cursor: pointer; font-family: 'Poppins', sans-serif;
       box-shadow: 0 6px 22px rgba(255,100,130,0.35); transition: all 0.3s;
     }
     .get-started-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,100,130,0.5); }
 
-    /* ── KNOW YOUR COACH ── */
+    /* ══════════════════════════════════════
+       KNOW YOUR COACH
+    ══════════════════════════════════════ */
     .know-coach-section { padding: 36px 20px 32px; background: #0d0d1a; text-align: center; }
-    /* Vertical layout for coach stats */
     .coach-stats-vertical {
       display: flex; flex-direction: column; gap: 0;
-      max-width: 320px; margin: 0 auto 20px;
+      max-width: 440px; margin: 0 auto 22px;
       border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
     }
     .cs-v-item {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 36px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .cs-v-item:last-child { border-bottom: none; }
     .cs-v-num {
-      font-size: 1.5rem; font-weight: 900;
-      background: linear-gradient(135deg, #ff8fab, #c084fc);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      line-height: 1;
-    }
-    .cs-v-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .cs-v-icon { font-size: 1.5rem; opacity: 0.8; }
-
-    .your-time-card {
-      background: linear-gradient(135deg, rgba(255,100,130,0.10), rgba(192,132,252,0.10));
-      border: 1px solid rgba(255,100,130,0.22); border-radius: 16px;
-      padding: 22px 20px; max-width: 480px; margin: 0 auto;
-    }
-    .your-time-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 16px; }
-    .your-time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .yt-stat { text-align: center; padding: 16px 12px; background: rgba(255,255,255,0.05); border-radius: 12px; }
-    .yt-num {
-      font-size: 1.5rem; font-weight: 900;
+      font-size: 2rem; font-weight: 900;
       background: linear-gradient(135deg, #ff8fab, #c084fc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
     }
-    .yt-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 5px; }
+    .cs-v-lbl { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .cs-v-icon { font-size: 2rem; opacity: 0.85; }
+    .your-time-card {
+      background: linear-gradient(135deg, rgba(255,100,130,0.10), rgba(192,132,252,0.10));
+      border: 1px solid rgba(255,100,130,0.22); border-radius: 16px;
+      padding: 26px 24px; max-width: 480px; margin: 0 auto;
+    }
+    .your-time-title { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 18px; }
+    .your-time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .yt-stat { text-align: center; padding: 18px 14px; background: rgba(255,255,255,0.05); border-radius: 12px; }
+    .yt-num {
+      font-size: 1.9rem; font-weight: 900;
+      background: linear-gradient(135deg, #ff8fab, #c084fc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
+    }
+    .yt-lbl { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 6px; }
 
-    /* ── FAQ ── */
+    /* ══════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════ */
     .faq-section { padding: 36px 20px 32px; background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a); }
     .faq-list { max-width: 700px; margin: 20px auto 0; }
     .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
     .faq-q {
-      width: 100%; background: none; border: none; text-align: left; padding: 14px 6px;
-      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,0.9); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 14px; transition: color 0.2s;
+      width: 100%; background: none; border: none; text-align: left; padding: 16px 6px;
+      font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,0.9); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 14px; transition: color 0.2s;
     }
     .faq-q:hover { color: #ff8fab; }
     .faq-icon {
@@ -316,50 +327,56 @@
       font-size: 17px; font-weight: 700; flex-shrink: 0; transition: all 0.3s;
     }
     .faq-item.open .faq-icon { background: #ff6482; border-color: #ff6482; color: white; transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 6px; font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; }
-    .faq-item.open .faq-a { max-height: 140px; padding-bottom: 14px; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 6px; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 160px; padding-bottom: 14px; }
 
-    /* ── CTA / HOW TO START ── */
+    /* ══════════════════════════════════════
+       CTA — point 8: bigger text everywhere
+    ══════════════════════════════════════ */
     .cta-section { padding: 36px 20px 32px; background: #0d0d1a; }
     .cta-inner { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-    .cta-left h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; color: #fff; margin-bottom: 5px; }
+    /* point 8: bigger heading */
+    .cta-left h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: #fff; margin-bottom: 8px; }
     .cta-left h2 .grad { background: linear-gradient(135deg, #ff6482, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .cta-left p { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 14px; line-height: 1.6; }
-    .how-to-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
-    .how-to-title { font-size: 12px; font-weight: 700; color: #ff8fab; margin-bottom: 8px; }
-    .how-to-line { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.9; }
+    .cta-left p { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 18px; line-height: 1.6; }
+    .how-to-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .how-to-title { font-size: 17px; font-weight: 700; color: #ff8fab; margin-bottom: 12px; }
+    .how-to-line { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 2.1; }
     .how-to-line strong { color: #fff; }
+    /* point 8: bigger save number */
     .wa-number-box {
       display: flex; align-items: center; gap: 8px;
       background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.22);
-      border-radius: 10px; padding: 11px 14px; margin-bottom: 10px;
+      border-radius: 10px; padding: 13px 16px; margin-bottom: 12px;
     }
-    .wa-number-box span { font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 600; }
+    .wa-number-box span { font-size: 17px; color: rgba(255,255,255,0.9); font-weight: 700; }
     .wa-msg-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: linear-gradient(135deg, #ff6482, #c084fc);
-      color: white; font-size: 13px; font-weight: 700; padding: 12px;
+      color: white; font-size: 17px; font-weight: 700; padding: 15px;
       border-radius: 10px; border: none; cursor: pointer; font-family: 'Poppins', sans-serif;
-      box-shadow: 0 4px 16px rgba(255,100,130,0.3); transition: all 0.3s; width: 100%; margin-bottom: 10px;
+      box-shadow: 0 4px 16px rgba(255,100,130,0.3); transition: all 0.3s; width: 100%; margin-bottom: 12px;
     }
     .wa-msg-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,100,130,0.45); }
     .within-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px 16px; }
-    .within-title { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
-    .within-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.65); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .within-title { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
+    .within-item { display: flex; align-items: center; gap: 8px; font-size: 15px; color: rgba(255,255,255,0.75); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .within-item:last-child { border-bottom: none; }
-    .within-check { width: 18px; height: 18px; background: linear-gradient(135deg, #ff6482, #c084fc); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
-    .cta-right { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px 18px; }
-    .cta-right-title { font-size: 14px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 3px; }
-    .cta-right-sub { font-size: 11px; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 14px; }
+    .within-check { width: 20px; height: 20px; background: linear-gradient(135deg, #ff6482, #c084fc); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+    .cta-right { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 22px 18px; }
+    .cta-right-title { font-size: 16px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 4px; }
+    .cta-right-sub { font-size: 12px; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 16px; }
 
-    /* ── FOOTER ── */
-    footer { padding: 22px 20px 18px; background: #070710; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
-    .footer-name { font-size: 1rem; font-weight: 800; background: linear-gradient(135deg, #ff8fab, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
-    .footer-tagline { font-size: 11px; color: rgba(255,255,255,0.25); margin-bottom: 3px; }
-    .footer-sign { font-size: 11px; color: rgba(255,255,255,0.2); margin-bottom: 10px; }
-    footer a { color: rgba(255,255,255,0.35); font-size: 11px; text-decoration: none; transition: color 0.2s; }
+    /* ══════════════════════════════════════
+       FOOTER — point 10: bigger text
+    ══════════════════════════════════════ */
+    footer { padding: 24px 20px 20px; background: #070710; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    /* point 10: bigger tagline */
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 5px; font-weight: 500; }
+    .footer-sign { font-size: 14px; color: rgba(255,255,255,0.3); margin-bottom: 14px; }
+    footer a { color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; transition: color 0.2s; font-weight: 500; }
     footer a:hover { color: #ff8fab; }
-    .footer-powered { font-size: 10px; color: rgba(255,255,255,0.15); margin-top: 6px; }
+    .footer-powered { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.35); margin-top: 8px; }
 
     /* ── SCROLL REVEAL ── */
     .sr { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -372,6 +389,7 @@
       .your-time-grid { grid-template-columns: 1fr 1fr; }
       .form-box { padding: 26px 18px; }
       .stats-vertical, .coach-stats-vertical { max-width: 100%; }
+      .wa-connect-btn, .get-started-btn { max-width: 100%; }
     }
   </style>
 </head>
@@ -393,22 +411,20 @@
   </div>
 </div>
 
-<!-- ── FORM MODAL (all 3 buttons open this) ── -->
+<!-- ── FORM MODAL ── -->
 <div class="modal-overlay" id="formModal">
   <div class="form-box">
     <button class="modal-close" onclick="closeModal('formModal')">×</button>
     <div class="form-box-title">🚀 Start Your Journey</div>
     <div class="form-box-sub">Fill details — Afreen will reach out within 24 hrs</div>
-
     <div class="fgroup">
       <label>Full Name *</label>
       <input type="text" id="m-name" placeholder="Your full name" />
     </div>
     <div class="fgroup">
       <label>Phone *</label>
-      <input type="tel" id="m-phone" placeholder="+91 XXXXX XXXXX" />
+      <input type="tel" id="m-phone" placeholder="Enter 10-digit number" maxlength="10" inputmode="numeric" pattern="[0-9]{10}" />
     </div>
-    <!-- Age + Gender on ONE line (point 8) -->
     <div class="frow">
       <div class="fgroup">
         <label>Age *</label>
@@ -434,26 +450,26 @@
         <option>Other</option>
       </select>
     </div>
-
-    <button class="form-send-btn" id="sendBtn" onclick="submitForm()">
-      📲 Send to WhatsApp
-    </button>
+    <button class="form-send-btn" id="sendBtn" onclick="submitForm()">📲 Send to WhatsApp</button>
     <div class="form-status" id="formStatus"></div>
   </div>
 </div>
 
-<!-- ── HERO ── -->
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-badge">
     <div class="live-dot"></div>
     🚀 Skill Seekers Community
   </div>
-  <!-- Point 1: "Join X People" animated count -->
+  <!-- point 2: 10,000+ -->
   <div class="hero-count" id="heroCount">Join 0 People</div>
   <div class="hero-label">Rising Together • From Zero to Online Earner</div>
   <div class="hero-tagline">Learn<span>•</span>Earn<span>•</span>Grow</div>
 
   <div class="journey-block">
+    <!-- point 1: bordered label same style as badge -->
     <div class="journey-label">👇 Watch My Journey 👇</div>
     <div class="yt-embed" id="ytEmbed">
       <div class="yt-placeholder">
@@ -463,11 +479,9 @@
       </div>
     </div>
   </div>
-</section>
 
-<!-- ── COACH ── -->
-<section class="coach-section">
-  <div style="max-width:520px;margin:0 auto;position:relative;z-index:1;">
+  <!-- ── COACH — directly below video, no gap ── -->
+  <div class="coach-inner-wrap">
     <span class="coach-label">💫 Your Coach</span>
     <div class="coach-photo-ring">
       <div class="coach-photo-inner">
@@ -475,7 +489,7 @@
         👩‍💼
       </div>
     </div>
-    <h2 class="coach-name">Hi, I'm Mantasha Khan</h2>
+    <h2 class="coach-name">Hi, I'm Afreen Saiyed</h2>
     <div class="coach-roles">
       <div class="coach-role">✅ Entrepreneur</div>
       <div class="coach-role">💻 Freelancer</div>
@@ -488,8 +502,6 @@
     <button class="wa-connect-btn sr" onclick="openFormModal()">
       📲 Connect on WhatsApp
     </button>
-
-    <!-- Point 2: VERTICAL stats with full numbers -->
     <div class="stats-vertical sr">
       <div class="stat-v-item">
         <div class="stat-v-left">
@@ -516,9 +528,12 @@
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════ -->
 <section class="testimonials-section">
   <div class="section-header sr">
+    <!-- point 5: bigger title & subtitle -->
     <h2 class="section-title-main">✨ Real <span class="highlight">Success Stories</span></h2>
     <p class="section-subtitle">100% real feedback from real students</p>
   </div>
@@ -527,7 +542,9 @@
   </div>
 </section>
 
-<!-- ── BENEFITS ── -->
+<!-- ══════════════════════════════════════
+     BENEFITS — point 6: bigger text
+══════════════════════════════════════ -->
 <section class="benefits-section">
   <div class="section-header sr">
     <h2 class="section-title-main">What Happens When <span class="highlight">You Join?</span></h2>
@@ -554,18 +571,19 @@
       <p class="benefit-desc">Begin from Week 1 confidently</p>
     </div>
   </div>
+  <!-- point 7: full-width wider button -->
   <div class="get-started-wrap sr">
     <button class="get-started-btn" onclick="openFormModal()">📲 Get Started Now</button>
   </div>
 </section>
 
-<!-- ── KNOW YOUR COACH ── -->
+<!-- ══════════════════════════════════════
+     KNOW YOUR COACH
+══════════════════════════════════════ -->
 <section class="know-coach-section">
   <div class="section-header sr">
     <h2 class="section-title-main">Know Your <span class="highlight">Coach</span></h2>
   </div>
-
-  <!-- Point 3: VERTICAL layout for coach stats -->
   <div class="coach-stats-vertical sr">
     <div class="cs-v-item">
       <div>
@@ -582,8 +600,6 @@
       <div class="cs-v-icon">👥</div>
     </div>
   </div>
-
-  <!-- Point 4: ₹16,00,000 -->
   <div class="your-time-card sr">
     <div class="your-time-title">🔥 Now it's YOUR time</div>
     <div class="your-time-grid">
@@ -599,7 +615,9 @@
   </div>
 </section>
 
-<!-- ── FAQ ── -->
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
 <section class="faq-section">
   <div class="section-header sr">
     <h2 class="section-title-main">Frequently Asked <span class="highlight">Questions</span></h2>
@@ -640,7 +658,9 @@
   </div>
 </section>
 
-<!-- ── CTA / HOW TO START ── -->
+<!-- ══════════════════════════════════════
+     CTA — point 8: bigger text
+══════════════════════════════════════ -->
 <section class="cta-section">
   <div class="cta-inner">
     <div class="cta-left sr">
@@ -654,13 +674,9 @@
         <div class="how-to-line"><strong>🎂 Age:</strong> Your Age</div>
         <div class="how-to-line"><strong>💼 Profession:</strong> Current Status</div>
       </div>
-
-      <!-- Point 5: No WA icon, no +91, just 📌 -->
       <div class="wa-number-box">
-        <span>📌 Save My Number: <strong>84608 01154</strong></span>
+        <span>📌 Save My Number: <strong>8460801154</strong></span>
       </div>
-
-      <!-- Point 6 button: opens form popup -->
       <button class="wa-msg-btn" onclick="openFormModal()">
         📲 Message on WhatsApp Now
       </button>
@@ -671,67 +687,72 @@
       </div>
     </div>
 
-    <!-- Point 6: Right col — only Instagram button, no "after you message" box, no name highlight -->
+    <!-- point 9: Privacy Policy below Instagram -->
     <div class="cta-right sr" style="transition-delay:.1s">
       <div class="cta-right-title">Stay Connected 📸</div>
-      <div class="cta-right-sub">Follow for daily updates & tips</div>
       <a href="https://www.instagram.com/afreen_saiyed" target="_blank" rel="noopener"
-         style="display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:13px;font-weight:700;padding:13px;border-radius:10px;text-decoration:none;transition:all 0.3s;margin-bottom:14px;"
+         style="display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:14px;font-weight:700;padding:14px;border-radius:10px;text-decoration:none;transition:all 0.3s;margin-bottom:14px;"
          onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
          onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         Follow on Instagram
       </a>
+      <!-- point 9: Privacy Policy below Instagram -->
+      <div style="text-align:center;margin-top:6px;">
+        <a href="#" onclick="openModal('privacyModal');return false;"
+           style="color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;transition:color 0.2s;"
+           onmouseover="this.style.color='#ff8fab'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
+          🔒 Privacy Policy
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER: Point 6 — Privacy Policy where name was, Powered by Adhabits ── -->
+<!-- ══════════════════════════════════════
+     FOOTER — point 10: bigger text, no privacy policy here
+══════════════════════════════════════ -->
 <footer>
   <div class="footer-tagline">🌟 Empower with skills • 🌈 Support every vision • 🚀 Dreams to direction</div>
   <div class="footer-sign">❤️ With Strength & Sincerity, Afreen Saiyed</div>
-  <a href="#" onclick="openModal('privacyModal');return false;">Privacy Policy</a>
-  <div class="footer-powered">Powered by Adhabits</div>
+  <div class="footer-powered">Powered by <strong>AdDestini</strong></div>
 </footer>
 
 <script>
-  /* ============================================================
-     GOOGLE SHEETS URL
-     Paste your Apps Script Web App URL below after setup
-     See GOOGLE-SHEET-SETUP.md for full instructions
-  ============================================================ */
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwTwscESOaY6DjO3bmSyUe2cuqh2iXytlmILOEoKGlgtbLhlsk8DpJKy79xBvg4yt3l/exec';
+  /* ── GOOGLE SHEET URL — paste your Apps Script URL here ── */
+  const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-  /* ============================================================
-     YOUTUBE VIDEO ID
-     e.g. if URL is youtube.com/watch?v=abc123  →  set 'abc123'
-  ============================================================ */
+  /* ── YOUTUBE ID — e.g. 'dQw4w9WgXcQ' ── */
   const YOUTUBE_ID = null;
-
   if (YOUTUBE_ID) {
     document.getElementById('ytEmbed').innerHTML =
       `<iframe src="https://www.youtube.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1"
         title="Watch My Journey" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>`;
   }
 
-  /* ── MODAL HELPERS ── */
-  function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
+  /* ── MODALS ── */
+  function openModal(id)  { document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
   function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow=''; }
   function openFormModal() { clearForm(); openModal('formModal'); }
-
   document.querySelectorAll('.modal-overlay').forEach(o => {
     o.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); });
   });
-  document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeModal('formModal'); closeModal('privacyModal'); } });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal('formModal'); closeModal('privacyModal'); } });
 
   function clearForm() {
-    ['m-name','m-phone','m-age','m-gender','m-profession'].forEach(id => document.getElementById(id).value='');
+    ['m-name','m-phone','m-age','m-gender','m-profession'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('formStatus').textContent='';
     const btn=document.getElementById('sendBtn');
     btn.disabled=false; btn.textContent='📲 Send to WhatsApp';
   }
 
-  /* ── FORM SUBMIT (Point 8: exact message format) ── */
+  /* ── PHONE — block non-numeric & enforce 10 digits max ── */
+  document.getElementById('m-phone').addEventListener('input', function() {
+    // strip anything that isn't a digit
+    this.value = this.value.replace(/\D/g, '').slice(0, 10);
+  });
+
+  /* ── FORM SUBMIT ── */
   async function submitForm() {
     const name  = document.getElementById('m-name').value.trim();
     const phone = document.getElementById('m-phone').value.trim();
@@ -739,139 +760,107 @@
     const gender= document.getElementById('m-gender').value;
     const prof  = document.getElementById('m-profession').value;
 
-    if (!name||!phone||!age||!gender||!prof) {
+    // Validation
+    if (!name || !phone || !age || !gender || !prof) {
       document.getElementById('formStatus').style.color='#f87171';
       document.getElementById('formStatus').textContent='⚠️ Please fill in all fields.';
       return;
     }
+    if (phone.length !== 10) {
+      document.getElementById('formStatus').style.color='#f87171';
+      document.getElementById('formStatus').textContent='⚠️ Phone number must be exactly 10 digits.';
+      return;
+    }
 
-    const btn=document.getElementById('sendBtn');
-    btn.disabled=true; btn.textContent='Saving...';
+    const btn = document.getElementById('sendBtn');
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
     document.getElementById('formStatus').style.color='#facc15';
     document.getElementById('formStatus').textContent='⏳ Saving your details...';
 
-    /* Point 9: Google Sheet save — always opens WA regardless */
-    await saveToSheet({name, phone, age, gender, profession:prof});
+    // Save to Google Sheet
+    await saveToSheet({ name, phone, age, gender, profession: prof });
 
     document.getElementById('formStatus').style.color='#4ade80';
     document.getElementById('formStatus').textContent='✅ Opening WhatsApp...';
 
-    /* Point 8: Exact WhatsApp message format */
-    const msg =
-`Hello Ma'am,
-
-I am interested in work. Here are my details:
-
-Name: ${name}
-Phone: ${phone}
-Age: ${age}
-Gender: ${gender}
-Profession: ${prof}
-
-Please share next steps. Thank you!`;
-
+    const msg = `Hello Ma'am,\n\nI am interested in your program. Here are my details:\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${prof}\n\nPlease share next steps. Thank you!`;
     setTimeout(() => {
       window.open(`https://wa.me/918460801154?text=${encodeURIComponent(msg)}`, '_blank');
       setTimeout(() => closeModal('formModal'), 600);
     }, 900);
   }
 
-  /* Point 9: Fixed Google Sheet save — uses no-cors fetch, always resolves */
+  /* ── GOOGLE SHEET SAVE — fixed ── */
   async function saveToSheet(data) {
-    if (!SHEET_URL || SHEET_URL==='https://script.google.com/macros/s/AKfycbwTwscESOaY6DjO3bmSyUe2cuqh2iXytlmILOEoKGlgtbLhlsk8DpJKy79xBvg4yt3l/exec') return;
+    if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
     try {
-      const params = new URLSearchParams({
-        timestamp: new Date().toLocaleString('en-IN'),
-        name:       data.name,
-        phone:      data.phone,
-        age:        data.age,
-        gender:     data.gender,
-        profession: data.profession
-      });
-      /* no-cors: fetch never throws even on network issues, always resolves */
-      await fetch(`${SHEET_URL}?${params.toString()}`, { method:'GET', mode:'no-cors' });
+      // Build URL with all params explicitly
+      const url = SHEET_URL
+        + '?timestamp=' + encodeURIComponent(new Date().toLocaleString('en-IN'))
+        + '&name='       + encodeURIComponent(data.name)
+        + '&phone='      + encodeURIComponent(data.phone)
+        + '&age='        + encodeURIComponent(data.age)
+        + '&gender='     + encodeURIComponent(data.gender)
+        + '&profession=' + encodeURIComponent(data.profession);
+
+      // Use no-cors — Apps Script accepts GET requests cross-origin
+      await fetch(url, { method: 'GET', mode: 'no-cors' });
     } catch(e) {
-      /* silent fail — WA still opens */
-      console.warn('Sheet save skipped:', e);
+      console.warn('Sheet save error:', e);
     }
   }
 
   /* ── TESTIMONIALS ── */
-  const imgs = [
-    'https://i.ibb.co/396gM0y2/nisha-ff-2.jpg','https://i.ibb.co/nMfsCKrL/nisha-ff-3.jpg',
-    'https://i.ibb.co/ZpZQfyXn/nisha-ff-4.jpg','https://i.ibb.co/gZzG5hgW/nisha-ff-5.jpg',
-    'https://i.ibb.co/0jwXPVfJ/nisha-ff-6.jpg','https://i.ibb.co/7xbKk16V/nisha-ff-7.jpg',
-    'https://i.ibb.co/gMgvwMH6/nisha-ff-8.jpg','https://i.ibb.co/qYxMj57h/nisha-ff-9.jpg',
-    'https://i.ibb.co/0j4SNwBv/nisha-ff-10.jpg','https://i.ibb.co/nq49L0p8/nisha-ff1.jpg',
-    'https://i.ibb.co/NgKkTXGH/nisha-ff-11.jpg'
-  ];
+  const imgs=['https://i.ibb.co/396gM0y2/nisha-ff-2.jpg','https://i.ibb.co/nMfsCKrL/nisha-ff-3.jpg','https://i.ibb.co/ZpZQfyXn/nisha-ff-4.jpg','https://i.ibb.co/gZzG5hgW/nisha-ff-5.jpg','https://i.ibb.co/0jwXPVfJ/nisha-ff-6.jpg','https://i.ibb.co/7xbKk16V/nisha-ff-7.jpg','https://i.ibb.co/gMgvwMH6/nisha-ff-8.jpg','https://i.ibb.co/qYxMj57h/nisha-ff-9.jpg','https://i.ibb.co/0j4SNwBv/nisha-ff-10.jpg','https://i.ibb.co/nq49L0p8/nisha-ff1.jpg','https://i.ibb.co/NgKkTXGH/nisha-ff-11.jpg'];
   const row1=document.getElementById('row1');
-  [...imgs,...imgs].forEach(src=>{
-    const d=document.createElement('div'); d.className='tcard';
-    d.innerHTML=`<img src="${src}" alt="Student success" loading="lazy"/>`;
-    row1.appendChild(d);
-  });
+  [...imgs,...imgs].forEach(src=>{ const d=document.createElement('div'); d.className='tcard'; d.innerHTML=`<img src="${src}" alt="Student" loading="lazy"/>`; row1.appendChild(d); });
 
   /* ── FAQ ── */
   function toggleFaq(btn){
-    const item=btn.closest('.faq-item'), isOpen=item.classList.contains('open');
+    const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
     if(!isOpen) item.classList.add('open');
   }
 
-  /* ── HERO COUNT ANIMATION — easeOutExpo, fast & snappy ── */
-  function animateHeroCount() {
-    const el       = document.getElementById('heroCount');
-    const target   = 2000;
-    const duration = 1400;
-    const startTime = performance.now();
-    function easeOutExpo(t){ return t===1 ? 1 : 1 - Math.pow(2, -10*t); }
+  /* ── HERO COUNT (point 2: 10,000+) ── */
+  function animateHeroCount(){
+    const el=document.getElementById('heroCount');
+    const target=10000, duration=1600;
+    const startTime=performance.now();
+    function easeOutExpo(t){ return t===1?1:1-Math.pow(2,-10*t); }
     function tick(now){
-      const progress = Math.min((now - startTime) / duration, 1);
-      const current  = Math.floor(easeOutExpo(progress) * target);
-      el.textContent = `Join ${current.toLocaleString('en-IN')}+ People`;
-      if(progress < 1) requestAnimationFrame(tick);
+      const progress=Math.min((now-startTime)/duration,1);
+      const current=Math.floor(easeOutExpo(progress)*target);
+      el.textContent=`Join ${current.toLocaleString('en-IN')}+ People`;
+      if(progress<1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
   }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', animateHeroCount);
-  } else {
-    animateHeroCount();
-  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',animateHeroCount); } else { animateHeroCount(); }
 
-  /* ── COUNTER ANIMATION — easeOutExpo ── */
-  function animateCounter(el) {
-    if(el.dataset.animated) return;
-    el.dataset.animated='1';
-    const target   = parseInt(el.dataset.target);
-    const suffix   = el.dataset.suffix || '';
-    const prefix   = el.dataset.prefix || '';
-    const duration = target >= 100000 ? 1800 : 1400;
-    const startTime = performance.now();
-    function easeOutExpo(t){ return t===1 ? 1 : 1 - Math.pow(2, -10*t); }
+  /* ── ALL COUNTERS ── */
+  function animateCounter(el){
+    if(el.dataset.animated) return; el.dataset.animated='1';
+    const target=parseInt(el.dataset.target);
+    const suffix=el.dataset.suffix||'', prefix=el.dataset.prefix||'';
+    const duration=target>=100000?2000:1400;
+    const startTime=performance.now();
+    function easeOutExpo(t){ return t===1?1:1-Math.pow(2,-10*t); }
     function tick(now){
-      const progress = Math.min((now - startTime) / duration, 1);
-      const current  = Math.floor(easeOutExpo(progress) * target);
-      el.textContent = prefix + current.toLocaleString('en-IN') + suffix;
-      if(progress < 1) requestAnimationFrame(tick);
+      const progress=Math.min((now-startTime)/duration,1);
+      const current=Math.floor(easeOutExpo(progress)*target);
+      el.textContent=prefix+current.toLocaleString('en-IN')+suffix;
+      if(progress<1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
   }
 
-  /* ── SCROLL REVEAL + counter trigger ── */
+  /* ── SCROLL REVEAL ── */
   const srObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        e.target.querySelectorAll('.counter').forEach(animateCounter);
-        srObs.unobserve(e.target);
-      }
-    });
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); e.target.querySelectorAll('.counter').forEach(animateCounter); srObs.unobserve(e.target); } });
   },{threshold:0.12});
   document.querySelectorAll('.sr').forEach(el=>srObs.observe(el));
-
-  /* Counters not inside .sr */
   const cObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ animateCounter(e.target); cObs.unobserve(e.target); } });
   },{threshold:0.4});
