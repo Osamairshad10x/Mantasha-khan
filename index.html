@@ -700,7 +700,7 @@
      Paste your Apps Script Web App URL below after setup
      See GOOGLE-SHEET-SETUP.md for full instructions
   ============================================================ */
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwTwscESOaY6DjO3bmSyUe2cuqh2iXytlmILOEoKGlgtbLhlsk8DpJKy79xBvg4yt3l/exec';
+  const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
   /* ============================================================
      YOUTUBE VIDEO ID
@@ -771,14 +771,14 @@ Profession: ${prof}
 Please share next steps. Thank you!`;
 
     setTimeout(() => {
-      window.open(⁠ https://wa.me/918460801154?text=${encodeURIComponent(msg)} ⁠, '_blank');
+      window.open(`https://wa.me/918460801154?text=${encodeURIComponent(msg)}`, '_blank');
       setTimeout(() => closeModal('formModal'), 600);
     }, 900);
   }
 
   /* Point 9: Fixed Google Sheet save — uses no-cors fetch, always resolves */
   async function saveToSheet(data) {
-    if (!SHEET_URL || SHEET_URL==='https://script.google.com/macros/s/AKfycbwTwscESOaY6DjO3bmSyUe2cuqh2iXytlmILOEoKGlgtbLhlsk8DpJKy79xBvg4yt3l/exec') return;
+    if (!SHEET_URL || SHEET_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
     try {
       const params = new URLSearchParams({
         timestamp: new Date().toLocaleString('en-IN'),
@@ -789,7 +789,7 @@ Please share next steps. Thank you!`;
         profession: data.profession
       });
       /* no-cors: fetch never throws even on network issues, always resolves */
-      await fetch(⁠ ${SHEET_URL}?${params.toString()} ⁠, { method:'GET', mode:'no-cors' });
+      await fetch(`${SHEET_URL}?${params.toString()}`, { method:'GET', mode:'no-cors' });
     } catch(e) {
       /* silent fail — WA still opens */
       console.warn('Sheet save skipped:', e);
@@ -808,7 +808,7 @@ Please share next steps. Thank you!`;
   const row1=document.getElementById('row1');
   [...imgs,...imgs].forEach(src=>{
     const d=document.createElement('div'); d.className='tcard';
-    d.innerHTML=⁠ <img src="${src}" alt="Student success" loading="lazy"/> ⁠;
+    d.innerHTML=`<img src="${src}" alt="Student success" loading="lazy"/>`;
     row1.appendChild(d);
   });
 
@@ -829,7 +829,7 @@ Please share next steps. Thank you!`;
     function tick(now){
       const progress = Math.min((now - startTime) / duration, 1);
       const current  = Math.floor(easeOutExpo(progress) * target);
-      el.textContent = ⁠ Join ${current.toLocaleString('en-IN')}+ People ⁠;
+      el.textContent = `Join ${current.toLocaleString('en-IN')}+ People`;
       if(progress < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
