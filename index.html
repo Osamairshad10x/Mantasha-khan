@@ -748,13 +748,13 @@
     const btn=document.getElementById('sendBtn');
     btn.disabled=true; btn.textContent='Saving...';
     document.getElementById('formStatus').style.color='#facc15';
-    document.getElementById('formStatus').textContent='';
+    document.getElementById('formStatus').textContent='⏳ Saving your details...';
 
     /* Point 9: Google Sheet save — always opens WA regardless */
     await saveToSheet({name, phone, age, gender, profession:prof});
 
     document.getElementById('formStatus').style.color='#4ade80';
-    document.getElementById('formStatus').textContent='';
+    document.getElementById('formStatus').textContent='✅ Opening WhatsApp...';
 
     /* Point 8: Exact WhatsApp message format */
     const msg =
@@ -771,7 +771,7 @@ Profession: ${prof}
 Please share next steps. Thank you!`;
 
     setTimeout(() => {
-      window.open(`https://wa.me/918460801154?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(⁠ https://wa.me/918460801154?text=${encodeURIComponent(msg)} ⁠, '_blank');
       setTimeout(() => closeModal('formModal'), 600);
     }, 900);
   }
@@ -789,7 +789,7 @@ Please share next steps. Thank you!`;
         profession: data.profession
       });
       /* no-cors: fetch never throws even on network issues, always resolves */
-      await fetch(`${SHEET_URL}?${params.toString()}`, { method:'GET', mode:'no-cors' });
+      await fetch(⁠ ${SHEET_URL}?${params.toString()} ⁠, { method:'GET', mode:'no-cors' });
     } catch(e) {
       /* silent fail — WA still opens */
       console.warn('Sheet save skipped:', e);
@@ -808,7 +808,7 @@ Please share next steps. Thank you!`;
   const row1=document.getElementById('row1');
   [...imgs,...imgs].forEach(src=>{
     const d=document.createElement('div'); d.className='tcard';
-    d.innerHTML=`<img src="${src}" alt="Student success" loading="lazy"/>`;
+    d.innerHTML=⁠ <img src="${src}" alt="Student success" loading="lazy"/> ⁠;
     row1.appendChild(d);
   });
 
@@ -829,7 +829,7 @@ Please share next steps. Thank you!`;
     function tick(now){
       const progress = Math.min((now - startTime) / duration, 1);
       const current  = Math.floor(easeOutExpo(progress) * target);
-      el.textContent = `Join ${current.toLocaleString('en-IN')}+ People`;
+      el.textContent = ⁠ Join ${current.toLocaleString('en-IN')}+ People ⁠;
       if(progress < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
