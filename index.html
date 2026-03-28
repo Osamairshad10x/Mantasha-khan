@@ -406,17 +406,17 @@
     </div>
     <div class="fgroup">
       <label>Phone *</label>
-      <input type="tel" id="m-phone" placeholder="+91 XXXXX XXXXX" />
+      <input type="tel" id="m-phone" name="phone" placeholder="+91 XXXXX XXXXX" />
     </div>
     <!-- Age + Gender on ONE line (point 8) -->
     <div class="frow">
       <div class="fgroup">
         <label>Age *</label>
-        <input type="number" id="m-age" placeholder="Age" min="15" max="60" />
+        <input type="number" id="m-age" name="age" placeholder="Age" min="15" max="60" />
       </div>
       <div class="fgroup">
         <label>Gender *</label>
-        <select id="m-gender">
+        <select id="m-gender" name="gender">
           <option value="">Select</option>
           <option>Female</option>
           <option>Male</option>
@@ -426,7 +426,7 @@
     </div>
     <div class="fgroup">
       <label>Profession *</label>
-      <select id="m-profession">
+     <select id="m-profession" name="profession">
         <option value="">Select</option>
         <option>Student</option>
         <option>Housewife</option>
