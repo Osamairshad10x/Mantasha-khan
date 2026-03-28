@@ -778,7 +778,26 @@ Please share next steps. Thank you!`;
 
   /* Point 9: Fixed Google Sheet save — uses no-cors fetch, always resolves */
   async function saveToSheet(data) {
-    if (!SHEET_URL || SHEET_URL==='https://script.google.com/macros/s/AKfycbwTwscESOaY6DjO3bmSyUe2cuqh2iXytlmILOEoKGlgtbLhlsk8DpJKy79xBvg4yt3l/exec') return;
+ async function saveToSheet(data) {
+  try {
+    const params = new URLSearchParams({
+      timestamp: new Date().toLocaleString('en-IN'),
+      name: data.name,
+      phone: data.phone,
+      age: data.age,
+      gender: data.gender,
+      profession: data.profession
+    });
+
+    await fetch(`${SHEET_URL}?${params.toString()}`, {
+      method: 'GET',
+      mode: 'no-cors'
+    });
+
+  } catch(e) {
+    console.warn('Sheet save skipped:', e);
+  }
+}
     try {
       const params = new URLSearchParams({
         timestamp: new Date().toLocaleString('en-IN'),
