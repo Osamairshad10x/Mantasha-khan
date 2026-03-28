@@ -748,13 +748,13 @@
     const btn=document.getElementById('sendBtn');
     btn.disabled=true; btn.textContent='Saving...';
     document.getElementById('formStatus').style.color='#facc15';
-    document.getElementById('formStatus').textContent='⏳ Saving your details...';
+    document.getElementById('formStatus').textContent='';
 
     /* Point 9: Google Sheet save — always opens WA regardless */
     await saveToSheet({name, phone, age, gender, profession:prof});
 
     document.getElementById('formStatus').style.color='#4ade80';
-    document.getElementById('formStatus').textContent='✅ Opening WhatsApp...';
+    document.getElementById('formStatus').textContent='';
 
     /* Point 8: Exact WhatsApp message format */
     const msg =
