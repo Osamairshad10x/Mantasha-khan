@@ -798,7 +798,7 @@
     btn.disabled = true;
     btn.textContent = 'Saving...';
     document.getElementById('formStatus').style.color='#facc15';
-    document.getElementById('formStatus').textContent='⏳ Saving your details...';
+    document.getElementById('formStatus').textContent='';
 
     // Save to Google Sheet
     await saveToSheet({ name, phone, age, gender, profession: prof });
