@@ -5,932 +5,382 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Afreen Saiyed – Learn, Earn & Grow Online ✨</title>
   <meta name="description" content="Join Afreen Saiyed's Skill Seekers Community. Learn digital skills, earn online, and transform your life." />
-
-  <!-- Google Fonts matching original style -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
-    /* ===== RESET & BASE ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+    body { font-family: 'Poppins', sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
 
-    /* ===== PRIVACY MODAL ===== */
+    /* ── MODAL OVERLAY ── */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88); z-index: 9999;
+      align-items: center; justify-content: center;
+      padding: 20px; backdrop-filter: blur(6px);
     }
     .modal-overlay.active { display: flex; }
-    .modal-box {
-      background: #1a1a2e;
-      border: 1px solid rgba(255,100,130,0.3);
-      border-radius: 20px;
-      padding: 36px;
-      max-width: 520px;
-      width: 100%;
-      position: relative;
-      max-height: 85vh;
-      overflow-y: auto;
+
+    /* ── PRIVACY MODAL ── */
+    .privacy-box {
+      background: #1a1a2e; border: 1px solid rgba(255,100,130,0.25);
+      border-radius: 20px; padding: 32px; max-width: 500px; width: 100%;
+      position: relative; max-height: 85vh; overflow-y: auto;
     }
     .modal-close {
-      position: absolute;
-      top: 16px; right: 20px;
-      background: none; border: none;
-      color: #aaa; font-size: 22px;
-      cursor: pointer; line-height: 1;
+      position: absolute; top: 12px; right: 16px;
+      background: none; border: none; color: #aaa; font-size: 24px; cursor: pointer;
     }
     .modal-close:hover { color: #fff; }
-    .modal-box h3 {
-      color: #ff6482;
-      font-size: 15px;
-      font-weight: 600;
-      margin: 20px 0 8px;
-    }
-    .modal-box h3:first-of-type { margin-top: 0; }
-    .modal-box p {
-      color: rgba(255,255,255,0.7);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-    .modal-box .modal-footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-    }
+    .privacy-box h3 { color: #ff6482; font-size: 13px; font-weight: 700; margin: 16px 0 5px; }
+    .privacy-box h3:first-of-type { margin-top: 0; }
+    .privacy-box p { color: rgba(255,255,255,0.65); font-size: 12px; line-height: 1.7; }
+    .privacy-footer { margin-top: 14px; font-size: 11px; color: rgba(255,255,255,0.3); }
 
-    /* ===== FLOATING WHATSAPP ===== */
-    .wa-fab {
-      position: fixed;
-      bottom: 24px; right: 24px;
-      z-index: 999;
-      background: #25D366;
-      color: white;
-      border-radius: 50px;
-      padding: 13px 20px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
-      transition: all 0.3s;
-      animation: fabIn 1s 0.5s ease both;
+    /* ── FORM MODAL ── */
+    .form-box {
+      background: #13131f; border: 1px solid rgba(255,100,130,0.25);
+      border-radius: 22px; padding: 32px 28px; max-width: 440px; width: 100%;
+      position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
     }
-    .wa-fab:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
-    @keyframes fabIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .form-box-title { font-size: 18px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 3px; }
+    .form-box-sub { font-size: 11px; color: rgba(255,255,255,0.4); text-align: center; margin-bottom: 22px; }
+    .fgroup { margin-bottom: 12px; }
+    .fgroup label {
+      display: block; font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px;
+    }
+    .fgroup input, .fgroup select {
+      width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px;
+      font-family: 'Poppins', sans-serif; font-size: 13px; color: #fff;
+      outline: none; transition: all 0.25s; -webkit-appearance: none;
+    }
+    .fgroup input::placeholder { color: rgba(255,255,255,0.25); }
+    .fgroup select option { background: #1a1a2e; color: #fff; }
+    .fgroup input:focus, .fgroup select:focus { border-color: #ff6482; background: rgba(255,100,130,0.07); }
+    /* Age + Gender on ONE line */
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-send-btn {
+      width: 100%; padding: 13px; background: linear-gradient(135deg, #ff6482, #c084fc);
+      color: white; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700;
+      border: none; border-radius: 10px; cursor: pointer; margin-top: 6px;
+      box-shadow: 0 6px 22px rgba(255,100,130,0.35); transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-send-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,100,130,0.5); }
+    .form-send-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-status { text-align: center; font-size: 12px; margin-top: 10px; min-height: 16px; color: #4ade80; }
 
-    /* ===== SECTION 1: HERO / COMMUNITY ===== */
+    /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      background: linear-gradient(160deg, #0d0d1a 0%, #1a0a1e 40%, #0d0d1a 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px 60px;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; background: linear-gradient(160deg, #0d0d1a 0%, #1a0a1e 40%, #0d0d1a 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 48px 20px 36px; position: relative; overflow: hidden;
     }
-
-    /* Animated background orbs */
     .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
+      content: ''; position: absolute; width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(255,100,130,0.18) 0%, transparent 65%);
       top: -150px; left: 50%; transform: translateX(-50%);
-      animation: orbPulse 7s ease-in-out infinite;
-      pointer-events: none;
+      animation: orb1 7s ease-in-out infinite; pointer-events: none;
     }
     .hero::after {
-      content: '';
-      position: absolute;
-      width: 400px; height: 400px;
+      content: ''; position: absolute; width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(160,80,255,0.12) 0%, transparent 65%);
       bottom: -100px; right: -80px;
-      animation: orbPulse 9s ease-in-out infinite reverse;
-      pointer-events: none;
+      animation: orb2 9s ease-in-out infinite; pointer-events: none;
     }
-    @keyframes orbPulse {
-      0%,100%{transform:translateX(-50%) scale(1)}
-      50%{transform:translateX(-50%) scale(1.15)}
-    }
+    @keyframes orb1 { 0%,100%{transform:translateX(-50%) scale(1)} 50%{transform:translateX(-50%) scale(1.15)} }
+    @keyframes orb2 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
 
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,100,130,0.12);
-      border: 1px solid rgba(255,100,130,0.35);
-      color: #ff8fab;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 8px 18px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.7s ease both;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,100,130,0.12); border: 1px solid rgba(255,100,130,0.35);
+      color: #ff8fab; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 7px 16px; border-radius: 100px;
+      margin-bottom: 16px; position: relative; z-index: 1; animation: fadeUp 0.7s ease both;
     }
     .live-dot {
-      width: 7px; height: 7px;
-      background: #ff6482; border-radius: 50%;
+      width: 7px; height: 7px; background: #ff6482; border-radius: 50%;
       animation: liveBlink 1.5s infinite;
     }
     @keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,100,130,0.5)} 50%{opacity:0.4;box-shadow:0 0 0 6px rgba(255,100,130,0)} }
 
-    .hero-community-count {
-      font-size: clamp(3rem, 10vw, 7rem);
-      font-weight: 900;
-      line-height: 1;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.8s 0.1s ease both;
+    /* ── HERO COUNT — animated text ── */
+    .hero-count {
+      font-size: clamp(2.4rem, 8vw, 5.5rem); font-weight: 900; line-height: 1;
+      position: relative; z-index: 1; animation: fadeUp 0.8s 0.1s ease both;
       background: linear-gradient(135deg, #ffffff 0%, #ff8fab 50%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero-community-label {
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      font-weight: 700;
-      color: rgba(255,255,255,0.9);
-      margin-top: 4px;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.8s 0.15s ease both;
+    .hero-label {
+      font-size: clamp(0.85rem, 2.2vw, 1.1rem); font-weight: 700;
+      color: rgba(255,255,255,0.9); margin-top: 4px;
+      position: relative; z-index: 1; animation: fadeUp 0.8s 0.15s ease both;
     }
     .hero-tagline {
-      font-size: 14px;
-      color: rgba(255,255,255,0.45);
-      margin-top: 10px;
-      letter-spacing: 1px;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.8s 0.2s ease both;
+      font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: 1px;
+      position: relative; z-index: 1; animation: fadeUp 0.8s 0.2s ease both;
     }
-    .hero-tagline span { color: rgba(255,255,255,0.25); margin: 0 8px; }
+    .hero-tagline span { color: rgba(255,255,255,0.2); margin: 0 8px; }
 
-    .hero-video-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.8);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 12px 24px;
-      border-radius: 100px;
-      cursor: pointer;
-      text-decoration: none;
-      margin-top: 32px;
-      position: relative; z-index: 1;
+    .journey-block {
+      position: relative; z-index: 1; margin-top: 18px; width: 100%; max-width: 500px;
       animation: fadeUp 0.8s 0.25s ease both;
-      transition: all 0.3s;
     }
-    .hero-video-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-    .play-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, #ff6482, #c084fc);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+    .journey-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+    .yt-embed { width: 100%; border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+    .yt-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+    .yt-placeholder {
+      width: 100%; aspect-ratio: 16/9; background: rgba(255,255,255,0.04);
+      border: 2px dashed rgba(255,100,130,0.3); border-radius: 14px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; color: rgba(255,255,255,0.3); font-size: 13px;
     }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-
-    /* ===== SECTION 2: COACH INTRO ===== */
+    /* ── COACH SECTION ── */
     .coach-section {
       background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a);
-      padding: 80px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      padding: 36px 20px 32px; text-align: center; position: relative; overflow: hidden;
     }
     .coach-section::before {
-      content: '';
-      position: absolute;
-      width: 500px; height: 500px;
+      content: ''; position: absolute; width: 500px; height: 500px;
       background: radial-gradient(circle, rgba(192,132,252,0.10) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      pointer-events: none;
+      top: -100px; right: -100px; pointer-events: none;
     }
-
-    .coach-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #c084fc;
-      margin-bottom: 16px;
-      display: block;
-    }
-
+    .coach-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c084fc; margin-bottom: 14px; display: block; }
     .coach-photo-ring {
-      width: 130px; height: 130px;
-      border-radius: 50%;
+      width: 110px; height: 110px; border-radius: 50%;
       background: linear-gradient(135deg, #ff6482, #c084fc);
-      padding: 3px;
-      margin: 0 auto 28px;
-      animation: ringPulse 3s ease-in-out infinite;
+      padding: 3px; margin: 0 auto 18px; animation: ringPulse 3s ease-in-out infinite;
     }
     @keyframes ringPulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,100,130,0.3)} 50%{box-shadow:0 0 0 12px rgba(255,100,130,0)} }
     .coach-photo-inner {
-      width: 100%; height: 100%;
-      border-radius: 50%;
+      width: 100%; height: 100%; border-radius: 50%;
       background: linear-gradient(145deg, #2a1535, #1a0a2e);
       display: flex; align-items: center; justify-content: center;
-      font-size: 3.5rem;
-      overflow: hidden;
+      font-size: 3rem; overflow: hidden;
     }
-    .coach-photo-inner img {
-      width: 100%; height: 100%;
-      object-fit: cover; border-radius: 50%;
-    }
-
+    .coach-photo-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
     .coach-name {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 800;
+      font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800;
       background: linear-gradient(135deg, #ffffff, #ff8fab);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 12px;
     }
-
-    .coach-roles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 32px;
-    }
+    .coach-roles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 16px; }
     .coach-role {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.85);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 10px 20px;
-      border-radius: 100px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 100px;
     }
-
     .vision-card {
-      background: rgba(255,100,130,0.08);
-      border: 1px solid rgba(255,100,130,0.25);
-      border-radius: 20px;
-      padding: 28px 32px;
-      max-width: 480px;
-      margin: 0 auto 36px;
-      position: relative;
+      background: rgba(255,100,130,0.08); border: 1px solid rgba(255,100,130,0.25);
+      border-radius: 14px; padding: 18px 22px; max-width: 480px; margin: 0 auto 20px; position: relative;
     }
     .vision-card::before {
-      content: '"';
-      font-size: 6rem;
-      color: rgba(255,100,130,0.15);
-      position: absolute;
-      top: -10px; left: 16px;
-      font-family: Georgia, serif;
-      line-height: 1;
+      content: '"'; font-size: 5rem; color: rgba(255,100,130,0.15);
+      position: absolute; top: -8px; left: 14px; font-family: Georgia, serif; line-height: 1;
     }
-    .vision-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #ff8fab;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .vision-text {
-      font-size: 17px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.6;
-      font-style: italic;
-    }
-
+    .vision-title { font-size: 12px; font-weight: 700; color: #ff8fab; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .vision-text { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.55; font-style: italic; }
     .wa-connect-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px 32px;
-      border-radius: 100px;
-      text-decoration: none;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.35);
-      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: linear-gradient(135deg, #ff6482, #c084fc);
+      color: white; font-size: 14px; font-weight: 700; padding: 13px 28px;
+      border-radius: 100px; border: none; cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255,100,130,0.35); transition: all 0.3s; font-family: 'Poppins', sans-serif;
     }
-    .wa-connect-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(37,211,102,0.5); }
+    .wa-connect-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,100,130,0.5); }
 
-    /* ===== STATS ROW ===== */
-    .stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
-      margin-top: 60px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 0;
+    /* ── STATS — VERTICAL layout ── */
+    .stats-vertical {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 24px; max-width: 340px; margin-left: auto; margin-right: auto;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden;
     }
-    .stat-item {
-      flex: 1;
-      min-width: 120px;
-      text-align: center;
-      padding: 32px 20px;
-      position: relative;
+    .stat-v-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-align: left;
     }
-    .stat-item::after {
-      content: '';
-      position: absolute;
-      right: 0; top: 20%; height: 60%;
-      width: 1px;
-      background: rgba(255,255,255,0.1);
-    }
-    .stat-item:last-child::after { display: none; }
-    .stat-num-big {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 900;
+    .stat-v-item:last-child { border-bottom: none; }
+    .stat-v-left { display: flex; flex-direction: column; }
+    .stat-v-num {
+      font-size: 1.6rem; font-weight: 900;
       background: linear-gradient(135deg, #ff8fab, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       line-height: 1;
     }
-    .stat-lbl {
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .stat-v-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-v-icon { font-size: 1.6rem; opacity: 0.7; }
 
-    /* ===== SECTION 3: TESTIMONIALS ===== */
-    .testimonials-section {
-      padding: 80px 0;
-      background: #0d0d1a;
-      overflow: hidden;
-    }
-    .section-header {
-      text-align: center;
-      padding: 0 20px;
-      margin-bottom: 48px;
-    }
-    .section-title-main {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
-    .section-title-main .highlight {
-      background: linear-gradient(135deg, #ff6482, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .section-subtitle {
-      font-size: 14px;
-      color: rgba(255,255,255,0.45);
-    }
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { padding: 36px 0 32px; background: #0d0d1a; overflow: hidden; }
+    .section-header { text-align: center; padding: 0 20px; margin-bottom: 20px; }
+    .section-title-main { font-size: clamp(1.3rem, 3.5vw, 2rem); font-weight: 800; color: #fff; margin-bottom: 5px; }
+    .highlight { background: linear-gradient(135deg, #ff6482, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-subtitle { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    /* Marquee */
     .marquee-outer {
       overflow: hidden;
       -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
       mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
     }
-    .marquee-inner {
-      display: flex;
-      gap: 16px;
-      width: max-content;
-      animation: slideX 35s linear infinite;
-    }
+    .marquee-inner { display: flex; gap: 14px; width: max-content; animation: slideX 35s linear infinite; }
     .marquee-inner:hover { animation-play-state: paused; }
-    .marquee-inner.rev { animation-direction: reverse; }
     @keyframes slideX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-    .tcard {
-      width: 260px;
-      height: 260px;
-      border-radius: 18px;
-      overflow: hidden;
-      flex-shrink: 0;
-      position: relative;
-      cursor: pointer;
-    }
-    .tcard img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
-    }
+    .tcard { width: 220px; height: 220px; border-radius: 14px; overflow: hidden; flex-shrink: 0; position: relative; cursor: pointer; }
+    .tcard img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
     .tcard:hover img { transform: scale(1.07); }
-    .tcard::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);
-    }
+    .tcard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 60%); }
 
-    /* ===== SECTION 4: WHAT HAPPENS ===== */
-    .benefits-section {
-      padding: 80px 20px;
-      background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a);
-    }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 800px;
-      margin: 48px auto 0;
-    }
+    /* ── BENEFITS ── */
+    .benefits-section { padding: 36px 20px 32px; background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a); }
+    .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 760px; margin: 20px auto 0; }
     .benefit-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 20px;
-      padding: 32px 28px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.35s ease;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px; padding: 22px 18px; position: relative; overflow: hidden; transition: all 0.35s ease;
     }
-    .benefit-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,100,130,0.05), rgba(192,132,252,0.05));
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-    .benefit-card:hover { transform: translateY(-5px); border-color: rgba(255,100,130,0.3); }
-    .benefit-card:hover::before { opacity: 1; }
+    .benefit-card:hover { transform: translateY(-4px); border-color: rgba(255,100,130,0.3); }
     .benefit-step {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, #ff6482, #c084fc);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 16px;
+      width: 34px; height: 34px; background: linear-gradient(135deg, #ff6482, #c084fc);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: white; margin-bottom: 12px;
     }
-    .benefit-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
-    .benefit-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-    }
-
-    .get-started-wrap {
-      text-align: center;
-      margin-top: 44px;
-    }
+    .benefit-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .benefit-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+    .get-started-wrap { text-align: center; margin-top: 22px; }
     .get-started-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 8px;
       background: linear-gradient(135deg, #ff6482, #c084fc);
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      padding: 16px 36px;
-      border-radius: 100px;
-      text-decoration: none;
-      box-shadow: 0 8px 28px rgba(255,100,130,0.35);
-      transition: all 0.3s;
+      color: white; font-size: 14px; font-weight: 700; padding: 13px 30px;
+      border-radius: 100px; border: none; cursor: pointer; font-family: 'Poppins', sans-serif;
+      box-shadow: 0 6px 22px rgba(255,100,130,0.35); transition: all 0.3s;
     }
-    .get-started-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(255,100,130,0.5); }
+    .get-started-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,100,130,0.5); }
 
-    /* ===== SECTION 5: KNOW YOUR COACH ===== */
-    .know-coach-section {
-      padding: 80px 20px;
-      background: #0d0d1a;
-      text-align: center;
+    /* ── KNOW YOUR COACH ── */
+    .know-coach-section { padding: 36px 20px 32px; background: #0d0d1a; text-align: center; }
+    /* Vertical layout for coach stats */
+    .coach-stats-vertical {
+      display: flex; flex-direction: column; gap: 0;
+      max-width: 320px; margin: 0 auto 20px;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
     }
-    .coach-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 500px;
-      margin: 0 auto 48px;
+    .cs-v-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .coach-stat-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 20px;
-      padding: 32px 20px;
-      text-align: center;
-    }
-    .coach-stat-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
-    .coach-stat-num {
-      font-size: 2.4rem;
-      font-weight: 900;
+    .cs-v-item:last-child { border-bottom: none; }
+    .cs-v-num {
+      font-size: 1.5rem; font-weight: 900;
       background: linear-gradient(135deg, #ff8fab, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       line-height: 1;
     }
-    .coach-stat-lbl {
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .cs-v-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cs-v-icon { font-size: 1.5rem; opacity: 0.8; }
 
     .your-time-card {
-      background: linear-gradient(135deg, rgba(255,100,130,0.12), rgba(192,132,252,0.12));
-      border: 1px solid rgba(255,100,130,0.25);
-      border-radius: 24px;
-      padding: 40px 32px;
-      max-width: 560px;
-      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(255,100,130,0.10), rgba(192,132,252,0.10));
+      border: 1px solid rgba(255,100,130,0.22); border-radius: 16px;
+      padding: 22px 20px; max-width: 480px; margin: 0 auto;
     }
-    .your-time-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 28px;
-    }
-    .your-time-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .yt-stat {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-    }
+    .your-time-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .your-time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .yt-stat { text-align: center; padding: 16px 12px; background: rgba(255,255,255,0.05); border-radius: 12px; }
     .yt-num {
-      font-size: 1.8rem;
-      font-weight: 900;
+      font-size: 1.5rem; font-weight: 900;
       background: linear-gradient(135deg, #ff8fab, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
     }
-    .yt-lbl {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      margin-top: 6px;
-    }
+    .yt-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 5px; }
 
-    /* ===== SECTION 6: FAQ ===== */
-    .faq-section {
-      padding: 80px 20px;
-      background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a);
-    }
-    .faq-list {
-      max-width: 720px;
-      margin: 48px auto 0;
-    }
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
+    /* ── FAQ ── */
+    .faq-section { padding: 36px 20px 32px; background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a); }
+    .faq-list { max-width: 700px; margin: 20px auto 0; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
     .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 22px 8px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      transition: color 0.2s;
+      width: 100%; background: none; border: none; text-align: left; padding: 14px 6px;
+      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.9); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 14px; transition: color 0.2s;
     }
     .faq-q:hover { color: #ff8fab; }
     .faq-icon {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: rgba(255,100,130,0.1);
-      border: 1.5px solid rgba(255,100,130,0.3);
-      color: #ff8fab;
+      width: 26px; height: 26px; border-radius: 50%; background: rgba(255,100,130,0.1);
+      border: 1.5px solid rgba(255,100,130,0.3); color: #ff8fab;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px; font-weight: 700;
-      flex-shrink: 0;
-      transition: all 0.3s;
+      font-size: 17px; font-weight: 700; flex-shrink: 0; transition: all 0.3s;
     }
-    .faq-item.open .faq-icon {
-      background: #ff6482;
-      border-color: #ff6482;
-      color: white;
-      transform: rotate(45deg);
-    }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s;
-      padding: 0 8px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.75;
-    }
-    .faq-item.open .faq-a { max-height: 160px; padding-bottom: 20px; }
+    .faq-item.open .faq-icon { background: #ff6482; border-color: #ff6482; color: white; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 6px; font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 140px; padding-bottom: 14px; }
 
-    /* ===== SECTION 7: CTA / HOW TO START ===== */
-    .cta-section {
-      padding: 80px 20px;
-      background: #0d0d1a;
-    }
-    .cta-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    .cta-left { }
-    .cta-left h2 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-    .cta-left h2 .grad {
-      background: linear-gradient(135deg, #ff6482, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .cta-left p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 28px;
-      line-height: 1.7;
-    }
-
-    .how-to-box {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 20px;
-      padding: 28px;
-      margin-bottom: 24px;
-    }
-    .how-to-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ff8fab;
-      margin-bottom: 16px;
-    }
-    .how-to-line {
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.9;
-    }
-    .how-to-line strong { color: #ffffff; }
-
+    /* ── CTA / HOW TO START ── */
+    .cta-section { padding: 36px 20px 32px; background: #0d0d1a; }
+    .cta-inner { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .cta-left h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; color: #fff; margin-bottom: 5px; }
+    .cta-left h2 .grad { background: linear-gradient(135deg, #ff6482, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-left p { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 14px; line-height: 1.6; }
+    .how-to-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+    .how-to-title { font-size: 12px; font-weight: 700; color: #ff8fab; margin-bottom: 8px; }
+    .how-to-line { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.9; }
+    .how-to-line strong { color: #fff; }
     .wa-number-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(37,211,102,0.08);
-      border: 1px solid rgba(37,211,102,0.25);
-      border-radius: 14px;
-      padding: 16px 20px;
-      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.22);
+      border-radius: 10px; padding: 11px 14px; margin-bottom: 10px;
     }
-    .wa-number-box span { font-size: 14px; color: rgba(255,255,255,0.7); }
-    .wa-number-box strong { color: #25D366; }
-
-    .wa-big-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 16px;
-      border-radius: 14px;
-      text-decoration: none;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.3);
-      transition: all 0.3s;
-      margin-bottom: 16px;
+    .wa-number-box span { font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 600; }
+    .wa-msg-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, #ff6482, #c084fc);
+      color: white; font-size: 13px; font-weight: 700; padding: 12px;
+      border-radius: 10px; border: none; cursor: pointer; font-family: 'Poppins', sans-serif;
+      box-shadow: 0 4px 16px rgba(255,100,130,0.3); transition: all 0.3s; width: 100%; margin-bottom: 10px;
     }
-    .wa-big-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.45); }
-
-    .ig-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 13px;
-      border-radius: 14px;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .ig-btn:hover { transform: translateY(-2px); opacity: 0.9; }
-
-    .within-box {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 20px;
-      padding: 24px 28px;
-      margin-top: 8px;
-    }
-    .within-title { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-    .within-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    .wa-msg-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,100,130,0.45); }
+    .within-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px 16px; }
+    .within-title { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+    .within-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.65); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .within-item:last-child { border-bottom: none; }
-    .within-item .check {
-      width: 22px; height: 22px;
-      background: linear-gradient(135deg, #ff6482, #c084fc);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; flex-shrink: 0;
-    }
+    .within-check { width: 18px; height: 18px; background: linear-gradient(135deg, #ff6482, #c084fc); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
+    .cta-right { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px 18px; }
+    .cta-right-title { font-size: 14px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 3px; }
+    .cta-right-sub { font-size: 11px; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 14px; }
 
-    /* ===== SECTION 8: FORM ===== */
-    .form-section {
-      padding: 80px 20px;
-      background: linear-gradient(160deg, #0d0d1a, #1a0a1e 50%, #0d0d1a);
-    }
-    .form-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 28px;
-      padding: 48px 40px;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-    .form-card-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #ffffff;
-      text-align: center;
-      margin-bottom: 6px;
-    }
-    .form-card-sub {
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    .form-group { margin-bottom: 16px; }
-    .form-group label {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 8px;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 14px 18px;
-      background: rgba(255,255,255,0.06);
-      border: 1.5px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      color: #ffffff;
-      outline: none;
-      transition: all 0.25s;
-      -webkit-appearance: none;
-    }
-    .form-group input::placeholder { color: rgba(255,255,255,0.3); }
-    .form-group select option { background: #1a1a2e; color: #fff; }
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: #ff6482;
-      background: rgba(255,100,130,0.08);
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .form-submit {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, #ff6482, #c084fc);
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      margin-top: 8px;
-      box-shadow: 0 8px 28px rgba(255,100,130,0.35);
-      transition: all 0.3s;
-    }
-    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(255,100,130,0.5); }
+    /* ── FOOTER ── */
+    footer { padding: 22px 20px 18px; background: #070710; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-name { font-size: 1rem; font-weight: 800; background: linear-gradient(135deg, #ff8fab, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
+    .footer-tagline { font-size: 11px; color: rgba(255,255,255,0.25); margin-bottom: 3px; }
+    .footer-sign { font-size: 11px; color: rgba(255,255,255,0.2); margin-bottom: 10px; }
+    footer a { color: rgba(255,255,255,0.35); font-size: 11px; text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #ff8fab; }
+    .footer-powered { font-size: 10px; color: rgba(255,255,255,0.15); margin-top: 6px; }
 
-    /* ===== FOOTER ===== */
-    footer {
-      padding: 48px 20px 32px;
-      background: #070710;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-name {
-      font-size: 1.3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ff8fab, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 12px;
-    }
-    .footer-tagline {
-      font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 8px;
-    }
-    .footer-sign {
-      font-size: 13px;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: 20px;
-    }
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .footer-links a {
-      color: rgba(255,255,255,0.3);
-      font-size: 12px;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: #ff8fab; }
-    .footer-powered {
-      font-size: 11px;
-      color: rgba(255,255,255,0.2);
-    }
-
-    /* ===== SCROLL REVEAL ===== */
-    .sr {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    /* ── SCROLL REVEAL ── */
+    .sr { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .sr.in { opacity: 1; transform: translateY(0); }
 
-    /* ===== RESPONSIVE ===== */
+    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .benefits-grid { grid-template-columns: 1fr; }
       .cta-inner { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .coach-stats-grid { grid-template-columns: 1fr 1fr; }
       .your-time-grid { grid-template-columns: 1fr 1fr; }
-      .stats-row { flex-direction: column; }
-      .stat-item::after { display: none; }
-      .form-card { padding: 32px 20px; }
-      .wa-fab span { display: none; }
-      .wa-fab { padding: 14px; border-radius: 50%; }
+      .form-box { padding: 26px 18px; }
+      .stats-vertical, .coach-stats-vertical { max-width: 100%; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== PRIVACY MODAL ===== -->
+<!-- ── PRIVACY MODAL ── -->
 <div class="modal-overlay" id="privacyModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('privacyModal').classList.remove('active')">×</button>
+  <div class="privacy-box">
+    <button class="modal-close" onclick="closeModal('privacyModal')">×</button>
     <h3>Information We Collect</h3>
     <p>We collect information you provide directly to us, such as your name, phone number, and email address when you contact us through WhatsApp or other channels.</p>
     <h3>How We Use Your Information</h3>
@@ -939,177 +389,221 @@
     <p>We implement appropriate security measures to protect your personal information. Your data is never sold or shared with third parties for marketing purposes.</p>
     <h3>Your Rights</h3>
     <p>You have the right to access, correct, or delete your personal information at any time. Contact us to exercise these rights or for any privacy-related concerns.</p>
-    <p class="modal-footer">By using our services, you agree to this privacy policy. Last updated: December 2024</p>
+    <p class="privacy-footer">By using our services, you agree to this privacy policy. Last updated: December 2024</p>
   </div>
 </div>
 
-<!-- ===== FLOATING WHATSAPP ===== -->
-<a class="wa-fab" href="https://wa.me/918460801154" target="_blank" rel="noopener">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  <span>Chat on WhatsApp</span>
-</a>
+<!-- ── FORM MODAL (all 3 buttons open this) ── -->
+<div class="modal-overlay" id="formModal">
+  <div class="form-box">
+    <button class="modal-close" onclick="closeModal('formModal')">×</button>
+    <div class="form-box-title">🚀 Start Your Journey</div>
+    <div class="form-box-sub">Fill details — Afreen will reach out within 24 hrs</div>
 
-<!-- ===== SECTION 1: HERO ===== -->
+    <div class="fgroup">
+      <label>Full Name *</label>
+      <input type="text" id="m-name" placeholder="Your full name" />
+    </div>
+    <div class="fgroup">
+      <label>Phone *</label>
+      <input type="tel" id="m-phone" placeholder="+91 XXXXX XXXXX" />
+    </div>
+    <!-- Age + Gender on ONE line (point 8) -->
+    <div class="frow">
+      <div class="fgroup">
+        <label>Age *</label>
+        <input type="number" id="m-age" placeholder="Age" min="15" max="60" />
+      </div>
+      <div class="fgroup">
+        <label>Gender *</label>
+        <select id="m-gender">
+          <option value="">Select</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="fgroup">
+      <label>Profession *</label>
+      <select id="m-profession">
+        <option value="">Select</option>
+        <option>Student</option>
+        <option>Housewife</option>
+        <option>Working Professional</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <button class="form-send-btn" id="sendBtn" onclick="submitForm()">
+      📲 Send to WhatsApp
+    </button>
+    <div class="form-status" id="formStatus"></div>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-badge">
     <div class="live-dot"></div>
     🚀 Skill Seekers Community
   </div>
-
-  <div class="hero-community-count" id="countNum">Join 2000+ People</div>
-  <div class="hero-community-label">Rising Together • From Zero to Online Earner</div>
+  <!-- Point 1: "Join X People" animated count -->
+  <div class="hero-count" id="heroCount">Join 0 People</div>
+  <div class="hero-label">Rising Together • From Zero to Online Earner</div>
   <div class="hero-tagline">Learn<span>•</span>Earn<span>•</span>Grow</div>
 
-  <a href="https://wa.me/918460801154" target="_blank" class="hero-video-btn">
-    <div class="play-icon">
-      <svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6L1 13V1z"/></svg>
+  <div class="journey-block">
+    <div class="journey-label">👇 Watch My Journey 👇</div>
+    <div class="yt-embed" id="ytEmbed">
+      <div class="yt-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="#ff6482"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span>YouTube video will appear here</span>
+        <span style="font-size:11px;opacity:0.5">Add your YouTube video ID in the code</span>
+      </div>
     </div>
-    👇 Watch My Journey 👇
-  </a>
+  </div>
 </section>
 
-<!-- ===== SECTION 2: COACH ===== -->
+<!-- ── COACH ── -->
 <section class="coach-section">
-  <div style="max-width:600px;margin:0 auto;position:relative;z-index:1;">
+  <div style="max-width:520px;margin:0 auto;position:relative;z-index:1;">
     <span class="coach-label">💫 Your Coach</span>
-
     <div class="coach-photo-ring">
       <div class="coach-photo-inner">
-        <!-- Replace src with Afreen's actual photo URL -->
+        <!-- Replace: <img src="PHOTO_URL" alt="Afreen Saiyed"/> -->
         👩‍💼
       </div>
     </div>
-
     <h2 class="coach-name">Hi, I'm Afreen Saiyed</h2>
-
     <div class="coach-roles">
       <div class="coach-role">✅ Entrepreneur</div>
       <div class="coach-role">💻 Freelancer</div>
       <div class="coach-role">🎯 Online-Skills Coach</div>
     </div>
-
     <div class="vision-card sr">
       <div class="vision-title">🎯 My Vision:</div>
       <div class="vision-text">"Empower People to Empower Themselves"</div>
     </div>
-
-    <a href="https://wa.me/918460801154" target="_blank" class="wa-connect-btn sr">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <button class="wa-connect-btn sr" onclick="openFormModal()">
       📲 Connect on WhatsApp
-    </a>
+    </button>
 
-    <!-- Stats row -->
-    <div class="stats-row sr" style="margin-top:48px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
-      <div class="stat-item">
-        <div class="stat-num-big" data-target="5">5+</div>
-        <div class="stat-lbl">Years of Experience</div>
+    <!-- Point 2: VERTICAL stats with full numbers -->
+    <div class="stats-vertical sr">
+      <div class="stat-v-item">
+        <div class="stat-v-left">
+          <div class="stat-v-num counter" data-target="5" data-suffix="+">0+</div>
+          <div class="stat-v-lbl">Years of Experience</div>
+        </div>
+        <div class="stat-v-icon">⭐</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num-big" data-target="2000">2000+</div>
-        <div class="stat-lbl">Students Helped</div>
+      <div class="stat-v-item">
+        <div class="stat-v-left">
+          <div class="stat-v-num counter" data-target="2000" data-suffix="+">0+</div>
+          <div class="stat-v-lbl">Students Helped</div>
+        </div>
+        <div class="stat-v-icon">👥</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num-big">₹1L</div>
-        <div class="stat-lbl">Monthly Earning</div>
+      <div class="stat-v-item">
+        <div class="stat-v-left">
+          <div class="stat-v-num counter" data-target="100000" data-prefix="₹" data-format="full">₹0</div>
+          <div class="stat-v-lbl">Monthly Earning</div>
+        </div>
+        <div class="stat-v-icon">💰</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SECTION 3: TESTIMONIALS ===== -->
+<!-- ── TESTIMONIALS ── -->
 <section class="testimonials-section">
   <div class="section-header sr">
     <h2 class="section-title-main">✨ Real <span class="highlight">Success Stories</span></h2>
     <p class="section-subtitle">100% real feedback from real students</p>
   </div>
-
-  <!-- Row 1 -->
-  <div class="marquee-outer" style="margin-bottom:16px;">
-    <div class="marquee-inner" id="row1"></div>
-  </div>
-  <!-- Row 2 -->
   <div class="marquee-outer">
-    <div class="marquee-inner rev" id="row2"></div>
+    <div class="marquee-inner" id="row1"></div>
   </div>
 </section>
 
-<!-- ===== SECTION 4: WHAT HAPPENS WHEN YOU JOIN ===== -->
+<!-- ── BENEFITS ── -->
 <section class="benefits-section">
   <div class="section-header sr">
     <h2 class="section-title-main">What Happens When <span class="highlight">You Join?</span></h2>
   </div>
-
   <div class="benefits-grid">
     <div class="benefit-card sr">
       <div class="benefit-step">1</div>
       <div class="benefit-title">Instant Connection</div>
       <p class="benefit-desc">Direct WhatsApp access to me</p>
     </div>
-    <div class="benefit-card sr" style="transition-delay:.1s">
+    <div class="benefit-card sr" style="transition-delay:.07s">
       <div class="benefit-step">2</div>
       <div class="benefit-title">Complete Access</div>
       <p class="benefit-desc">Proven step-by-step training system</p>
     </div>
-    <div class="benefit-card sr" style="transition-delay:.15s">
+    <div class="benefit-card sr" style="transition-delay:.12s">
       <div class="benefit-step">3</div>
       <div class="benefit-title">Daily Mentorship</div>
       <p class="benefit-desc">24/7 support & community access</p>
     </div>
-    <div class="benefit-card sr" style="transition-delay:.2s">
+    <div class="benefit-card sr" style="transition-delay:.17s">
       <div class="benefit-step">4</div>
       <div class="benefit-title">Start Earning</div>
       <p class="benefit-desc">Begin from Week 1 confidently</p>
     </div>
   </div>
-
   <div class="get-started-wrap sr">
-    <a href="#form" class="get-started-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      📲 Get Started Now
-    </a>
+    <button class="get-started-btn" onclick="openFormModal()">📲 Get Started Now</button>
   </div>
 </section>
 
-<!-- ===== SECTION 5: KNOW YOUR COACH ===== -->
+<!-- ── KNOW YOUR COACH ── -->
 <section class="know-coach-section">
   <div class="section-header sr">
     <h2 class="section-title-main">Know Your <span class="highlight">Coach</span></h2>
   </div>
 
-  <div class="coach-stats-grid sr">
-    <div class="coach-stat-card">
-      <span class="coach-stat-icon">⭐</span>
-      <div class="coach-stat-num">5+</div>
-      <div class="coach-stat-lbl">Years of Experience</div>
+  <!-- Point 3: VERTICAL layout for coach stats -->
+  <div class="coach-stats-vertical sr">
+    <div class="cs-v-item">
+      <div>
+        <div class="cs-v-num counter" data-target="5" data-suffix="+">0+</div>
+        <div class="cs-v-lbl">Years of Experience</div>
+      </div>
+      <div class="cs-v-icon">⭐</div>
     </div>
-    <div class="coach-stat-card">
-      <span class="coach-stat-icon">👥</span>
-      <div class="coach-stat-num">2000+</div>
-      <div class="coach-stat-lbl">Entrepreneurs Reached</div>
+    <div class="cs-v-item">
+      <div>
+        <div class="cs-v-num counter" data-target="1000" data-suffix="+">0+</div>
+        <div class="cs-v-lbl">Entrepreneurs Reached</div>
+      </div>
+      <div class="cs-v-icon">👥</div>
     </div>
   </div>
 
+  <!-- Point 4: ₹16,00,000 -->
   <div class="your-time-card sr">
     <div class="your-time-title">🔥 Now it's YOUR time</div>
     <div class="your-time-grid">
       <div class="yt-stat">
-        <div class="yt-num">₹1L+</div>
+        <div class="yt-num counter" data-target="1600000" data-prefix="₹" data-format="full">₹0</div>
         <div class="yt-lbl">Earned by Students</div>
       </div>
       <div class="yt-stat">
-        <div class="yt-num">500+</div>
+        <div class="yt-num counter" data-target="500" data-suffix="+">0+</div>
         <div class="yt-lbl">Earning ₹50K–₹1L</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SECTION 6: FAQ ===== -->
+<!-- ── FAQ ── -->
 <section class="faq-section">
   <div class="section-header sr">
     <h2 class="section-title-main">Frequently Asked <span class="highlight">Questions</span></h2>
   </div>
-
   <div class="faq-list sr">
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">What kind of work will I be doing? <span class="faq-icon">+</span></button>
@@ -1146,13 +640,12 @@
   </div>
 </section>
 
-<!-- ===== SECTION 7: CTA / HOW TO START ===== -->
+<!-- ── CTA / HOW TO START ── -->
 <section class="cta-section">
   <div class="cta-inner">
     <div class="cta-left sr">
       <h2>Ready to <span class="grad">Transform Your Life?</span></h2>
       <p>Join thousands on their journey to financial independence</p>
-
       <div class="how-to-box">
         <div class="how-to-title">📲 How to Start?</div>
         <div class="how-to-line">Simply message me on WhatsApp:</div>
@@ -1162,148 +655,227 @@
         <div class="how-to-line"><strong>💼 Profession:</strong> Current Status</div>
       </div>
 
+      <!-- Point 5: No WA icon, no +91, just 📌 -->
       <div class="wa-number-box">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span>📌 Save My Number: <strong>+91 84608 01154</strong></span>
+        <span>📌 Save My Number: <strong>84608 01154</strong></span>
       </div>
 
-      <a href="https://wa.me/918460801154?text=Hi%20Afreen!%20I%20want%20to%20join%20your%20community%20%F0%9F%9A%80" target="_blank" class="wa-big-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <!-- Point 6 button: opens form popup -->
+      <button class="wa-msg-btn" onclick="openFormModal()">
         📲 Message on WhatsApp Now
-      </a>
-
-      <a href="https://www.instagram.com/afreen_saiyed" target="_blank" class="ig-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Follow on Instagram
-      </a>
-
-      <div class="within-box" style="margin-top:20px;">
+      </button>
+      <div class="within-box">
         <div class="within-title">⏳ Within 24 hours:</div>
-        <div class="within-item"><div class="check">✓</div> 📋 Complete Details</div>
-        <div class="within-item"><div class="check">✓</div> 🗺 Clear Roadmap</div>
+        <div class="within-item"><div class="within-check">✓</div> 📋 Complete Details</div>
+        <div class="within-item"><div class="within-check">✓</div> 🗺 Clear Roadmap</div>
       </div>
     </div>
 
-    <!-- FORM -->
-    <div class="form-card sr" id="form" style="transition-delay:.15s">
-      <div class="form-card-title">🚀 Start Your Journey</div>
-      <div class="form-card-sub">Fill details to get started</div>
-
-      <div class="form-group">
-        <label>Full Name *</label>
-        <input type="text" id="f-name" placeholder="Your full name" />
-      </div>
-      <div class="form-group">
-        <label>Phone *</label>
-        <input type="tel" id="f-phone" placeholder="+91 XXXXX XXXXX" />
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Age *</label>
-          <input type="number" id="f-age" placeholder="Age" min="15" max="60" />
-        </div>
-        <div class="form-group">
-          <label>Gender *</label>
-          <select id="f-gender">
-            <option value="">Select</option>
-            <option>Female</option>
-            <option>Male</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Profession *</label>
-        <select id="f-profession">
-          <option value="">Select</option>
-          <option>Student</option>
-          <option>Housewife</option>
-          <option>Working Professional</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <button class="form-submit" onclick="submitForm()">📲 Send to WhatsApp</button>
+    <!-- Point 6: Right col — only Instagram button, no "after you message" box, no name highlight -->
+    <div class="cta-right sr" style="transition-delay:.1s">
+      <div class="cta-right-title">Stay Connected 📸</div>
+      <div class="cta-right-sub">Follow for daily updates & tips</div>
+      <a href="https://www.instagram.com/afreen_saiyed" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:13px;font-weight:700;padding:13px;border-radius:10px;text-decoration:none;transition:all 0.3s;margin-bottom:14px;"
+         onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Follow on Instagram
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ── FOOTER: Point 6 — Privacy Policy where name was, Powered by Adhabits ── -->
 <footer>
-  <div class="footer-name">Afreen Saiyed</div>
   <div class="footer-tagline">🌟 Empower with skills • 🌈 Support every vision • 🚀 Dreams to direction</div>
   <div class="footer-sign">❤️ With Strength & Sincerity, Afreen Saiyed</div>
-  <div class="footer-links">
-    <a href="#" onclick="document.getElementById('privacyModal').classList.add('active');return false;">Privacy Policy</a>
-    <a href="https://www.instagram.com/afreen_saiyed" target="_blank">Instagram</a>
-    <a href="https://wa.me/918460801154" target="_blank">WhatsApp</a>
-  </div>
+  <a href="#" onclick="openModal('privacyModal');return false;">Privacy Policy</a>
   <div class="footer-powered">Powered by Adhabits</div>
 </footer>
 
 <script>
-  // ===== TESTIMONIAL IMAGES =====
-  const imgs = [
-    'https://i.ibb.co/396gM0y2/nisha-ff-2.jpg',
-    'https://i.ibb.co/nMfsCKrL/nisha-ff-3.jpg',
-    'https://i.ibb.co/ZpZQfyXn/nisha-ff-4.jpg',
-    'https://i.ibb.co/gZzG5hgW/nisha-ff-5.jpg',
-    'https://i.ibb.co/0jwXPVfJ/nisha-ff-6.jpg',
-    'https://i.ibb.co/7xbKk16V/nisha-ff-7.jpg',
-    'https://i.ibb.co/gMgvwMH6/nisha-ff-8.jpg',
-    'https://i.ibb.co/qYxMj57h/nisha-ff-9.jpg',
-    'https://i.ibb.co/0j4SNwBv/nisha-ff-10.jpg',
-    'https://i.ibb.co/nq49L0p8/nisha-ff1.jpg',
-    'https://i.ibb.co/NgKkTXGH/nisha-ff-11.jpg',
-  ];
+  /* ============================================================
+     GOOGLE SHEETS URL
+     Paste your Apps Script Web App URL below after setup
+     See GOOGLE-SHEET-SETUP.md for full instructions
+  ============================================================ */
+  const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-  function buildRow(id, list) {
-    const el = document.getElementById(id);
-    [...list, ...list].forEach(src => {
-      const d = document.createElement('div');
-      d.className = 'tcard';
-      d.innerHTML = `<img src="${src}" alt="Student success story" loading="lazy"/>`;
-      el.appendChild(d);
-    });
-  }
-  buildRow('row1', imgs);
-  buildRow('row2', [...imgs].reverse());
+  /* ============================================================
+     YOUTUBE VIDEO ID
+     e.g. if URL is youtube.com/watch?v=abc123  →  set 'abc123'
+  ============================================================ */
+  const YOUTUBE_ID = null;
 
-  // ===== FAQ TOGGLE =====
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const open = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!open) item.classList.add('open');
+  if (YOUTUBE_ID) {
+    document.getElementById('ytEmbed').innerHTML =
+      `<iframe src="https://www.youtube.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1"
+        title="Watch My Journey" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>`;
   }
 
-  // ===== WHATSAPP FORM SUBMIT =====
-  function submitForm() {
-    const name     = document.getElementById('f-name').value.trim();
-    const phone    = document.getElementById('f-phone').value.trim();
-    const age      = document.getElementById('f-age').value.trim();
-    const gender   = document.getElementById('f-gender').value;
-    const prof     = document.getElementById('f-profession').value;
+  /* ── MODAL HELPERS ── */
+  function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow=''; }
+  function openFormModal() { clearForm(); openModal('formModal'); }
 
-    if (!name || !phone || !age || !gender || !prof) {
-      alert('Please fill in all fields before submitting.');
+  document.querySelectorAll('.modal-overlay').forEach(o => {
+    o.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); });
+  });
+  document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeModal('formModal'); closeModal('privacyModal'); } });
+
+  function clearForm() {
+    ['m-name','m-phone','m-age','m-gender','m-profession'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('formStatus').textContent='';
+    const btn=document.getElementById('sendBtn');
+    btn.disabled=false; btn.textContent='📲 Send to WhatsApp';
+  }
+
+  /* ── FORM SUBMIT (Point 8: exact message format) ── */
+  async function submitForm() {
+    const name  = document.getElementById('m-name').value.trim();
+    const phone = document.getElementById('m-phone').value.trim();
+    const age   = document.getElementById('m-age').value.trim();
+    const gender= document.getElementById('m-gender').value;
+    const prof  = document.getElementById('m-profession').value;
+
+    if (!name||!phone||!age||!gender||!prof) {
+      document.getElementById('formStatus').style.color='#f87171';
+      document.getElementById('formStatus').textContent='⚠️ Please fill in all fields.';
       return;
     }
 
-    const msg = `Hi Afreen! 👋\n\n📝 Name: ${name}\n📞 Phone: ${phone}\n🎂 Age: ${age}\n👤 Gender: ${gender}\n💼 Profession: ${prof}\n\nI want to join your Skill Seekers Community! 🚀`;
-    window.open(`https://wa.me/918460801154?text=${encodeURIComponent(msg)}`, '_blank');
+    const btn=document.getElementById('sendBtn');
+    btn.disabled=true; btn.textContent='Saving...';
+    document.getElementById('formStatus').style.color='#facc15';
+    document.getElementById('formStatus').textContent='⏳ Saving your details...';
+
+    /* Point 9: Google Sheet save — always opens WA regardless */
+    await saveToSheet({name, phone, age, gender, profession:prof});
+
+    document.getElementById('formStatus').style.color='#4ade80';
+    document.getElementById('formStatus').textContent='✅ Opening WhatsApp...';
+
+    /* Point 8: Exact WhatsApp message format */
+    const msg =
+`Hello Ma'am,
+
+I am interested in your program. Here are my details:
+
+Name: ${name}
+Phone: ${phone}
+Age: ${age}
+Gender: ${gender}
+Profession: ${prof}
+
+Please share next steps. Thank you!`;
+
+    setTimeout(() => {
+      window.open(`https://wa.me/918460801154?text=${encodeURIComponent(msg)}`, '_blank');
+      setTimeout(() => closeModal('formModal'), 600);
+    }, 900);
   }
 
-  // ===== SCROLL REVEAL =====
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
+  /* Point 9: Fixed Google Sheet save — uses no-cors fetch, always resolves */
+  async function saveToSheet(data) {
+    if (!SHEET_URL || SHEET_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
+    try {
+      const params = new URLSearchParams({
+        timestamp: new Date().toLocaleString('en-IN'),
+        name:       data.name,
+        phone:      data.phone,
+        age:        data.age,
+        gender:     data.gender,
+        profession: data.profession
+      });
+      /* no-cors: fetch never throws even on network issues, always resolves */
+      await fetch(`${SHEET_URL}?${params.toString()}`, { method:'GET', mode:'no-cors' });
+    } catch(e) {
+      /* silent fail — WA still opens */
+      console.warn('Sheet save skipped:', e);
+    }
+  }
+
+  /* ── TESTIMONIALS ── */
+  const imgs = [
+    'https://i.ibb.co/396gM0y2/nisha-ff-2.jpg','https://i.ibb.co/nMfsCKrL/nisha-ff-3.jpg',
+    'https://i.ibb.co/ZpZQfyXn/nisha-ff-4.jpg','https://i.ibb.co/gZzG5hgW/nisha-ff-5.jpg',
+    'https://i.ibb.co/0jwXPVfJ/nisha-ff-6.jpg','https://i.ibb.co/7xbKk16V/nisha-ff-7.jpg',
+    'https://i.ibb.co/gMgvwMH6/nisha-ff-8.jpg','https://i.ibb.co/qYxMj57h/nisha-ff-9.jpg',
+    'https://i.ibb.co/0j4SNwBv/nisha-ff-10.jpg','https://i.ibb.co/nq49L0p8/nisha-ff1.jpg',
+    'https://i.ibb.co/NgKkTXGH/nisha-ff-11.jpg'
+  ];
+  const row1=document.getElementById('row1');
+  [...imgs,...imgs].forEach(src=>{
+    const d=document.createElement('div'); d.className='tcard';
+    d.innerHTML=`<img src="${src}" alt="Student success" loading="lazy"/>`;
+    row1.appendChild(d);
+  });
+
+  /* ── FAQ ── */
+  function toggleFaq(btn){
+    const item=btn.closest('.faq-item'), isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
+
+  /* ── HERO COUNT ANIMATION — easeOutExpo, fast & snappy ── */
+  function animateHeroCount() {
+    const el       = document.getElementById('heroCount');
+    const target   = 2000;
+    const duration = 1400;
+    const startTime = performance.now();
+    function easeOutExpo(t){ return t===1 ? 1 : 1 - Math.pow(2, -10*t); }
+    function tick(now){
+      const progress = Math.min((now - startTime) / duration, 1);
+      const current  = Math.floor(easeOutExpo(progress) * target);
+      el.textContent = `Join ${current.toLocaleString('en-IN')}+ People`;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', animateHeroCount);
+  } else {
+    animateHeroCount();
+  }
+
+  /* ── COUNTER ANIMATION — easeOutExpo ── */
+  function animateCounter(el) {
+    if(el.dataset.animated) return;
+    el.dataset.animated='1';
+    const target   = parseInt(el.dataset.target);
+    const suffix   = el.dataset.suffix || '';
+    const prefix   = el.dataset.prefix || '';
+    const duration = target >= 100000 ? 1800 : 1400;
+    const startTime = performance.now();
+    function easeOutExpo(t){ return t===1 ? 1 : 1 - Math.pow(2, -10*t); }
+    function tick(now){
+      const progress = Math.min((now - startTime) / duration, 1);
+      const current  = Math.floor(easeOutExpo(progress) * target);
+      el.textContent = prefix + current.toLocaleString('en-IN') + suffix;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ── SCROLL REVEAL + counter trigger ── */
+  const srObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
         e.target.classList.add('in');
-        observer.unobserve(e.target);
+        e.target.querySelectorAll('.counter').forEach(animateCounter);
+        srObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  },{threshold:0.12});
+  document.querySelectorAll('.sr').forEach(el=>srObs.observe(el));
 
-  document.querySelectorAll('.sr').forEach(el => observer.observe(el));
+  /* Counters not inside .sr */
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ animateCounter(e.target); cObs.unobserve(e.target); } });
+  },{threshold:0.4});
+  document.querySelectorAll('.counter').forEach(el=>{ if(!el.closest('.sr')) cObs.observe(el); });
 </script>
 </body>
 </html>
