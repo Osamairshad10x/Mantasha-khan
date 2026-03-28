@@ -11,7 +11,7 @@
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body { font-family: 'Poppins', sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
 
     /* ── MODAL OVERLAY ── */
@@ -221,9 +221,13 @@
        TESTIMONIALS
     ══════════════════════════════════════ */
     .testimonials-section { padding: 36px 0 32px; background: #0d0d1a; overflow: hidden; }
-    .section-header { text-align: center; padding: 0 20px; margin-bottom: 22px; }
+    .section-header { text-align: center; padding: 0 20px; margin-bottom: 22px; overflow: hidden; }
     /* point 5: bigger title */
-    .section-title-main { font-size: clamp(1.9rem, 5.5vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 8px; white-space: nowrap; }
+    .section-title-main {
+      font-size: clamp(1rem, 5.5vw, 2.8rem);
+      font-weight: 800; color: #fff; margin-bottom: 8px;
+      white-space: nowrap; max-width: 100%; display: block;
+    }
     .highlight { background: linear-gradient(135deg, #ff6482, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     /* point 5: bigger subtitle */
     .section-subtitle { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.55); }
