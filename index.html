@@ -243,7 +243,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge"><div class="live-dot"></div>🚀 Online Earning Community</div>
-  <div class="hero-count" id="heroCount">Join 0 People</div>
+  <div class="hero-count" id="heroCount">Connect with 0 People</div>
   <div class="hero-label">Rising Together • From Zero to Online Earner</div>
   <div class="hero-tagline">Learn<span>•</span>Earn<span>•</span>Grow</div>
   <div class="journey-block">
@@ -512,7 +512,7 @@
     function easeOutExpo(t){ return t===1?1:1-Math.pow(2,-10*t); }
     function tick(now){
       const p=Math.min((now-startTime)/duration,1);
-      el.textContent=`Join ${Math.floor(easeOutExpo(p)*target).toLocaleString('en-IN')}+ People`;
+      el.textContent=`Connect with ${Math.floor(easeOutExpo(p)*target).toLocaleString('en-IN')}+ People`;
       if(p<1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
